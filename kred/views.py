@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from datetime import date
+from rest_framework.reverse import reverse
 from rest_framework import viewsets, status, generics, permissions
 from rest_framework.generics import (
     CreateAPIView
@@ -58,7 +59,6 @@ class PromoList(generics.ListAPIView):
 @api_view(['GET'])
 def api_root(request, format=None):
     return Response({
-        'users': reverse('user-list', request=request, format=format),
-        'cards': reverse('card-list', request=request, format=format)
+        'Welcome To kred.co'
     })
 
