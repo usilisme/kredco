@@ -1,0 +1,1 @@
+promo/	#Get all the active promotion banners based on the logic dateFr<=Todat<=dateTo.
