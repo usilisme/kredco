@@ -18,7 +18,7 @@ from django.contrib import admin
 from rest_framework import routers
 from rest_framework.urlpatterns import format_suffix_patterns
 from kred import views
-
+from rest_framework_jwt.views import obtain_jwt_token
 #router = routers.DefaultRouter()
 
 urlpatterns = [
@@ -29,6 +29,8 @@ urlpatterns = [
 
     url(r'^promo/$', views.PromoList.as_view()),
     url(r'^register/$', views.vwCrUser.as_view(), name='register'),
+
+    url(r'^api-token-auth/', obtain_jwt_token),
     url(r'^login/$', views.vwLoginUser.as_view(),name = 'login'),
     url(r'^admin/', admin.site.urls),
     url(r'^users/',include('users.urls', namespace='users')),
