@@ -1,53 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b3d8215e-d892-43d7-97fc-2cacbe11da3f" name="Default" comment="change the settings.">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kredco/settings/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kredco/settings/base.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kredco/settings/dev_hendra.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kredco/settings/prod.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/merchants/serializers.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/merchants/urls.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/promotions/forms.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/promotions/serializers.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/promotions/urls.py" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kred/migrations/0001_initial.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kred/migrations/0002_payer_addrmail.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kred/migrations/0003_card_owner.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kred/migrations/0004_auto_20170813_1548.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kred/migrations/0005_promo.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kred/migrations/0006_promo_name.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kred/migrations/0007_auto_20170814_1546.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kred/migrations/0008_auto_20170814_1915.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kred/migrations/0009_txn_card.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kred/migrations/0010_txn_payer.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kred/migrations/0011_auto_20170814_2053.py" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
+    <list default="true" id="b3d8215e-d892-43d7-97fc-2cacbe11da3f" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README_URL.txt" afterPath="$PROJECT_DIR$/README_URL.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cards/admin.py" afterPath="$PROJECT_DIR$/cards/admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cards/models.py" afterPath="$PROJECT_DIR$/cards/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cards/serializers.py" afterPath="$PROJECT_DIR$/cards/serializers.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cards/urls.py" afterPath="$PROJECT_DIR$/cards/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cards/views.py" afterPath="$PROJECT_DIR$/cards/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kred/admin.py" afterPath="$PROJECT_DIR$/kred/admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kred/forms.py" afterPath="$PROJECT_DIR$/kred/forms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kred/models.py" afterPath="$PROJECT_DIR$/kred/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kred/serializers.py" afterPath="$PROJECT_DIR$/kred/serializers.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kred/views.py" afterPath="$PROJECT_DIR$/kred/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kredco/settings.py" afterPath="$PROJECT_DIR$/kredco/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kredco/test.txt" afterPath="$PROJECT_DIR$/kredco/test.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kredco/urls.py" afterPath="$PROJECT_DIR$/kredco/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/transactions/admin.py" afterPath="$PROJECT_DIR$/transactions/admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/transactions/models.py" afterPath="$PROJECT_DIR$/transactions/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/transactions/serializers.py" afterPath="$PROJECT_DIR$/transactions/serializers.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/transactions/urls.py" afterPath="$PROJECT_DIR$/transactions/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/transactions/views.py" afterPath="$PROJECT_DIR$/transactions/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/users/admin.py" afterPath="$PROJECT_DIR$/users/admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/users/models.py" afterPath="$PROJECT_DIR$/users/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/users/serializers.py" afterPath="$PROJECT_DIR$/users/serializers.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/users/urls.py" afterPath="$PROJECT_DIR$/users/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/users/views.py" afterPath="$PROJECT_DIR$/users/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kredco/settings/base.py" afterPath="$PROJECT_DIR$/kredco/settings/base.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kredco/settings/dev_hendra.py" afterPath="$PROJECT_DIR$/kredco/settings/dev_hendra.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kredco/wsgi.py" afterPath="$PROJECT_DIR$/kredco/wsgi.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -57,7 +15,58 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="prod.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/kredco/settings/prod.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="base.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/kredco/settings/base.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="27" column="32" lean-forward="true" selection-start-line="27" selection-start-column="32" selection-end-line="27" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/kredco/settings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="646">
+              <caret line="53" column="34" lean-forward="true" selection-start-line="53" selection-start-column="34" selection-end-line="53" selection-end-column="34" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="wsgi.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/kredco/wsgi.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="13" column="1" lean-forward="false" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dev_hendra.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/kredco/settings/dev_hendra.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="34" lean-forward="false" selection-start-line="0" selection-start-column="34" selection-end-line="0" selection-end-column="34" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -73,6 +82,7 @@
       <find>reverse</find>
       <find>allo</find>
       <find>szCard</find>
+      <find>SECRET_KEY</find>
     </findStrings>
     <dirStrings>
       <dir>C:\Users\usilisme\OneDrive\Projects\kredco</dir>
@@ -117,8 +127,6 @@
         <option value="$PROJECT_DIR$/kred/views.py" />
         <option value="$PROJECT_DIR$/kredco/urls.py" />
         <option value="$PROJECT_DIR$/kredco/settings.py" />
-        <option value="$PROJECT_DIR$/kredco/settings/base.py" />
-        <option value="$PROJECT_DIR$/kredco/settings/dev_hendra.py" />
         <option value="$PROJECT_DIR$/kredco/settings/prod.py" />
         <option value="$PROJECT_DIR$/cards/serializers.py" />
         <option value="$PROJECT_DIR$/cards/views.py" />
@@ -126,6 +134,9 @@
         <option value="$PROJECT_DIR$/merchants/serializers.py" />
         <option value="$PROJECT_DIR$/transactions/views.py" />
         <option value="$PROJECT_DIR$/transactions/serializers.py" />
+        <option value="$PROJECT_DIR$/kredco/settings/dev_hendra.py" />
+        <option value="$PROJECT_DIR$/kredco/settings/base.py" />
+        <option value="$PROJECT_DIR$/kredco/wsgi.py" />
       </list>
     </option>
   </component>
@@ -161,7 +172,23 @@
             <path>
               <item name="kredco" type="b2602c69:ProjectViewProjectNode" />
               <item name="kredco" type="462c0819:PsiDirectoryNode" />
-              <item name="transactions" type="462c0819:PsiDirectoryNode" />
+              <item name="cards" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="kredco" type="b2602c69:ProjectViewProjectNode" />
+              <item name="kredco" type="462c0819:PsiDirectoryNode" />
+              <item name="kredco" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="kredco" type="b2602c69:ProjectViewProjectNode" />
+              <item name="kredco" type="462c0819:PsiDirectoryNode" />
+              <item name="kredco" type="462c0819:PsiDirectoryNode" />
+              <item name="settings" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="kredco" type="b2602c69:ProjectViewProjectNode" />
+              <item name="kredco" type="462c0819:PsiDirectoryNode" />
+              <item name="promotions" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -204,6 +231,14 @@
       <option name="presentableId" value="Default" />
       <updated>1502704976379</updated>
     </task>
+    <task id="LOCAL-00001" summary="change the settings.&#10;cleanup code imports.">
+      <created>1503079816323</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1503079816324</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -253,7 +288,8 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="LAST_COMMIT_MESSAGE" value="" />
+    <MESSAGE value="change the settings.&#10;cleanup code imports." />
+    <option name="LAST_COMMIT_MESSAGE" value="change the settings.&#10;cleanup code imports." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -298,20 +334,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/kredco/test.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="8" lean-forward="false" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kredco/wsgi.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/promotions/admin.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -323,20 +345,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="39" lean-forward="false" selection-start-line="2" selection-start-column="39" selection-end-line="2" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kredco/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/promotions/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -359,6 +367,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-170">
           <caret line="41" column="29" lean-forward="false" selection-start-line="41" selection-start-column="29" selection-end-line="41" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#46#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -408,6 +419,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="43" lean-forward="false" selection-start-line="5" selection-start-column="43" selection-end-line="5" selection-end-column="43" />
+          <folding>
+            <element signature="e#24#63#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -430,7 +444,7 @@
         <state relative-caret-position="476">
           <caret line="28" column="26" lean-forward="false" selection-start-line="28" selection-start-column="26" selection-end-line="28" selection-end-column="26" />
           <folding>
-            <element signature="e#640#681#0" expanded="true" />
+            <element signature="e#640#681#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -440,7 +454,7 @@
         <state relative-caret-position="221">
           <caret line="13" column="24" lean-forward="true" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
           <folding>
-            <element signature="e#24#63#0" expanded="true" />
+            <element signature="e#24#63#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -458,7 +472,7 @@
         <state relative-caret-position="238">
           <caret line="14" column="12" lean-forward="true" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
           <folding>
-            <element signature="e#24#63#0" expanded="true" />
+            <element signature="e#24#63#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -468,26 +482,8 @@
         <state relative-caret-position="459">
           <caret line="27" column="16" lean-forward="true" selection-start-line="27" selection-start-column="16" selection-end-line="27" selection-end-column="29" />
           <folding>
-            <element signature="e#640#681#0" expanded="true" />
+            <element signature="e#640#681#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kredco/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="403">
-          <caret line="28" column="0" lean-forward="true" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding>
-            <element signature="e#640#681#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kredco/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="93" column="0" lean-forward="false" selection-start-line="93" selection-start-column="0" selection-end-line="98" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -495,14 +491,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="12" column="1" lean-forward="true" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kredco/settings/dev_hendra.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="15" selection-end-column="23" />
           <folding />
         </state>
       </provider>
@@ -520,24 +508,8 @@
         <state relative-caret-position="136">
           <caret line="8" column="54" lean-forward="true" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="54" />
           <folding>
-            <element signature="e#24#63#0" expanded="true" />
+            <element signature="e#24#63#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kredco/settings/prod.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kredco/settings/base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="743">
-          <caret line="123" column="13" lean-forward="false" selection-start-line="123" selection-start-column="13" selection-end-line="123" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -546,7 +518,7 @@
         <state relative-caret-position="119">
           <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding>
-            <element signature="e#24#63#0" expanded="true" />
+            <element signature="e#24#63#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -580,7 +552,7 @@
         <state relative-caret-position="561">
           <caret line="33" column="33" lean-forward="true" selection-start-line="33" selection-start-column="33" selection-end-line="33" selection-end-column="33" />
           <folding>
-            <element signature="e#24#63#0" expanded="true" />
+            <element signature="e#24#63#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -590,7 +562,7 @@
         <state relative-caret-position="85">
           <caret line="5" column="29" lean-forward="false" selection-start-line="5" selection-start-column="29" selection-end-line="5" selection-end-column="29" />
           <folding>
-            <element signature="e#24#63#0" expanded="true" />
+            <element signature="e#24#63#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -608,7 +580,7 @@
         <state relative-caret-position="357">
           <caret line="21" column="31" lean-forward="false" selection-start-line="21" selection-start-column="31" selection-end-line="21" selection-end-column="31" />
           <folding>
-            <element signature="e#24#63#0" expanded="true" />
+            <element signature="e#24#63#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -634,7 +606,7 @@
         <state relative-caret-position="136">
           <caret line="8" column="4" lean-forward="true" selection-start-line="8" selection-start-column="4" selection-end-line="10" selection-end-column="61" />
           <folding>
-            <element signature="e#0#63#0" expanded="true" />
+            <element signature="e#0#63#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -644,7 +616,7 @@
         <state relative-caret-position="443">
           <caret line="27" column="34" lean-forward="true" selection-start-line="27" selection-start-column="34" selection-end-line="27" selection-end-column="34" />
           <folding>
-            <element signature="e#24#63#0" expanded="true" />
+            <element signature="e#24#63#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -654,7 +626,7 @@
         <state relative-caret-position="119">
           <caret line="7" column="43" lean-forward="false" selection-start-line="7" selection-start-column="43" selection-end-line="7" selection-end-column="43" />
           <folding>
-            <element signature="e#0#46#0" expanded="true" />
+            <element signature="e#0#46#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -663,6 +635,78 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kredco/settings/prod.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kredco/settings/dev_hendra.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="34" lean-forward="false" selection-start-line="0" selection-start-column="34" selection-end-line="0" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kredco/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kredco/test.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="8" lean-forward="false" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kredco/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="28" column="0" lean-forward="true" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kredco/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="53" column="34" lean-forward="true" selection-start-line="53" selection-start-column="34" selection-end-line="53" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kredco/wsgi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="13" column="1" lean-forward="false" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/promotions/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kredco/settings/base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="27" column="32" lean-forward="true" selection-start-line="27" selection-start-column="32" selection-end-line="27" selection-end-column="32" />
           <folding />
         </state>
       </provider>

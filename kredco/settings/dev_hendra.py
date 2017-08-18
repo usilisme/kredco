@@ -1,4 +1,4 @@
-from .base import *
+from kredco.settings.base import *
 
 DEBUG = True
 
