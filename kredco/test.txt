@@ -1,3 +1,14 @@
 http POST http://127.0.0.1:8888/api-token-auth/ username=usilisme password=abcd
 
+http POST http://128.199.253.80:8888/api-token-auth/ username=usilisme password=abcd
+
+
 http http://127.0.0.1:8888/cards/ "Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzaWxpc21lIiwidXNlcl9pZCI6MSwiZW1haWwiOiJoZW5kcmEuZGFudUBnbWFpbC5jb20iLCJleHAiOjE1MDI4MDYzNTh9.58Ln71g5qHozG2sjvq0alrmxGmfAMVQa-k8GH-KLqLo"
+
+Luxury - Watches
+Luxury - Diamonds
+Luxury
+
+Services
+
+Auto

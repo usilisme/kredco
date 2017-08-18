@@ -23,9 +23,11 @@ from users import views
 router = routers.DefaultRouter()
 
 urlpatterns = [
-    url(r'^register/$', views.vwCrUser.as_view(), name='register'),
-    url(r'^login/$', views.vwLoginUser.as_view(),name = 'login'),
-    url(r'^(?P<username>[\w-]+)/$', views.vwGetUser.as_view(), name='user-profiles'),
+    url(r'^api/register/$', views.vwCrUser.as_view(), name='register'),
+    url(r'^api/login/$', views.vwLoginUser.as_view(),name = 'login'),
+    url(r'^api/(?P<username>[\w-]+)/$'
+        , views.vwGetUser.as_view()
+        , name='user-profiles'),
     url(r'^(?P<username>[\w-]+)/reset-password/$', views.vwResetPass.as_view(), name='reset-password'),
 ]
 

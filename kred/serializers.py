@@ -6,7 +6,6 @@ from rest_framework.serializers import (
 )
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from kred.models import UserProfile,Payer,Payee,Card,Txn,Promo
 
 User = get_user_model()
 
@@ -81,32 +80,3 @@ class szUser(HyperlinkedModelSerializer):
     class Meta:
         model = User
         fields = ('username', 'email', 'password')
-
-class szUserProfile(HyperlinkedModelSerializer):
-    class Meta:
-        model = UserProfile
-        fields = ('nameFull','nik','avatar')
-
-class szPayer(HyperlinkedModelSerializer):
-    class Meta:
-        model = Payer
-
-class szPayee(HyperlinkedModelSerializer):
-    class Meta:
-        model = Payee
-
-class szCard(HyperlinkedModelSerializer):
-    owner = serializers.ReadOnlyField(source='owner.username')
-    class Meta:
-        model = Card
-        fields = ('owner','number')
-
-class szTxn(HyperlinkedModelSerializer):
-    class Meta:
-        model = Txn
-        fields = ('TxnKey','amount')
-
-class szPromo(HyperlinkedModelSerializer):
-    class Meta:
-        model = Promo
-        fields = ('name','imgBanner','dateFr','dateTo')

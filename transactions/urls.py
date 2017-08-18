@@ -22,8 +22,13 @@ from transactions import views
 
 
 urlpatterns = [
-    url(r'^$', views.vwGetTxn.as_view(), name='txn-list'),
-    url(r'^(?P<pk>[0-9]+)/$', views.vwDtlTxn.as_view(), name='txn-detail'),
+    url(r'^api/$'
+        , views.vwListTransaction.as_view()
+        , name='transaction-list'
+        ),
+    url(r'^api/(?P<pk>[\w-]+)/$'
+        , views.vwDtlTxn.as_view()
+        , name='transaction-detail'),
 ]
 
 

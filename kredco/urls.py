@@ -27,15 +27,25 @@ urlpatterns = [
     url(r'^$', views.api_root),
     url(r'^api-auth/',include('rest_framework.urls',namespace='rest_framework')),
 
-    url(r'^promo/$', views.PromoList.as_view()),
-    url(r'^register/$', views.vwCrUser.as_view(), name='register'),
-
-    url(r'^api-token-auth/', obtain_jwt_token),
-    url(r'^login/$', views.vwLoginUser.as_view(),name = 'login'),
     url(r'^admin/', admin.site.urls),
-    url(r'^users/',include('users.urls', namespace='users')),
-    url(r'^cards/',include('cards.urls', namespace='cards')),
-    url(r'^transactions/', include('transactions.urls', namespace='transactions')),
+    url(r'^users/api/login/$'
+        , obtain_jwt_token
+        ),
+    url(r'^promotions/'
+        , include('promotions.urls',namespace='promotions'),
+        ),
+    url(r'^merchants/'
+        , include('merchants.urls',namespace='merchants'),
+        ),
+    url(r'^users/'
+        ,include('users.urls', namespace='users')
+        ),
+    url(r'^cards/'
+        ,include('cards.urls', namespace='cards')
+        ),
+    url(r'^transactions/'
+        , include('transactions.urls', namespace='transactions')
+        ),
 ]
 
 

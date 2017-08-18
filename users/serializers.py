@@ -7,8 +7,8 @@ from rest_framework.serializers import (
 )
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from kred.models import (
-    UserProfile,Payer,Payee
+from users.models import (
+    UserProfile
 )
 
 User = get_user_model()
@@ -40,11 +40,6 @@ class szCrUser(ModelSerializer):
         user_obj.set_password(password)
         user_obj.save()
         return validated_data
-
-class szGetPayer(ModelSerializer):
-    class Meta:
-        model = Payer
-        fields = ('npwp')
 
 class szGetUserProfile(ModelSerializer):
     class Meta:

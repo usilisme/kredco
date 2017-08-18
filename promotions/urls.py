@@ -13,26 +13,17 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
-from cards import views
+from django.conf.urls import url, include
+from django.contrib import admin
+from rest_framework import routers
+from rest_framework.urlpatterns import format_suffix_patterns
+
+from promotions import views
 
 urlpatterns = [
     url(r'^api/$'
-        , views.vwListCard.as_view()
-        ,name='card-list'
-        ),
-    url(r'^api/(?P<pk>[0-9]+)/$'
-        , views.vwGetCard.as_view()
-        , name='card-detail'
-        ),
-    url(r'^api/(?P<pk>[0-9]+)/edit/$'
-        , views.vwUpdCard.as_view()
-        , name='card-update'
-        ),
-    url(r'^api/(?P<pk>[0-9]+)/delete/$'
-        , views.vwDelCard.as_view()
-        , name='card-delete'
-        ),
+        , views.vwListPromotion.as_view()
+        , name='promotion-list'),
 ]
 
 

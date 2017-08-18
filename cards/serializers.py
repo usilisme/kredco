@@ -1,22 +1,17 @@
-from django.contrib.auth import get_user_model
-from django.db.models import Q
-
 from rest_framework.serializers import (
     ModelSerializer,HyperlinkedModelSerializer, CharField, EmailField, ValidationError,
     PrimaryKeyRelatedField,
 )
-from rest_framework import serializers
-from django.contrib.auth.models import User
-from kred.models import UserProfile,Payer,Payee,Card,Txn,Promo
 
-User = get_user_model()
+from cards.models import Card
 
 class szListCard(ModelSerializer):
     class Meta:
         model = Card
-        fields = ('number',)
+        fields = ('id','number',)
 
 class szGetCard (ModelSerializer):
     class Meta:
         model = Card
-        fields = ('number',)
+        fields = ('type','number','dtExpiry','addBill')
+

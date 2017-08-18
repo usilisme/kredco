@@ -12,12 +12,13 @@ from rest_framework.status import HTTP_200_OK, HTTP_400_BAD_REQUEST
 
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import User
-from kred.forms import FormUser,FormPayer
-from kred.models import Card,Promo,UserProfile
-from rest_framework.permissions import AllowAny
-from kred.permissions import (IsOwnerOrReadOnly)
+
+from rest_framework.permissions import(
+    AllowAny,
+)
+
 from kred.serializers import (
-    szCrUser, szLoginUser,  szCard, szPromo
+    szCrUser, szLoginUser
 )
 from users.serializers import (
     szGetUser,szGetUserProfile,szResetPass
@@ -29,9 +30,10 @@ User = get_user_model()
 class vwCrUser(CreateAPIView):
     serializer_class = szCrUser
     queryset = User.objects.all()
+    permission_classes = (AllowAny,)
 
 class vwLoginUser(APIView):
-    permission_classes = [AllowAny]
+    permission_classes = (AllowAny,)
     serializer_class = szLoginUser
     def post(self, request, *args, **kwargs):
         data = request.data
