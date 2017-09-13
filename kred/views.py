@@ -1,13 +1,16 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 from promotions.models import Promotion
+from kred.forms import SignUpForm
 
 #SITE
 def index(request):
@@ -18,8 +21,19 @@ def index(request):
 def about(request):
     return render(request, 'about.html')
 
-def login(request):
-    return render (request, 'login.html')
+def signup(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            return redirect('index')
+    else:
+        form = SignUpForm()
+    return render(request, 'signup.html', {'form': form})
 
 #API
 @api_view(['GET'])
