@@ -1,6 +1,9 @@
 #Compiled Python File
 *.pyc
 
+#DEV Database SQLite
+db.sqlite3
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db

@@ -2,6 +2,8 @@ from kredco.settings.base import *
 
 DEBUG = True
 
+MEDIA_DIR = os.path.join(BASE_DIR,'media')
+
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 DATABASES = {
@@ -11,6 +13,5 @@ DATABASES = {
     }
 }
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.11/howto/static-files/
-STATIC_URL = '/static/'
+MEDIA_ROOT = MEDIA_DIR
+MEDIA_URL = '/media/'

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+    <head>
+        <title>
+			{% block title %} KRED.CO {% endblock title %}
+		</title>
+		{% block stylesheets %}
+			<link rel="stylesheet" href="{% static "css/base.css" %}" />
+        {% endblock stylesheets %}
+		{% block scripts%}
+			<script src="{% static "js/jquery.js" %}"></script>
+		{% endblock scripts %}
+    </head>
+    <body>
+		<div class="content">
+			{% block content %}
+				<h1>KRED.CO</h1>
+			{% endblock content %}
+		</div>
+    </body>
+</html>
