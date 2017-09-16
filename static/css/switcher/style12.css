@@ -1,0 +1,98 @@
+#style-switcher h2 a { background: #f50079 none repeat scroll 0 0 }
+
+.topcontrol {background: #f50079 none repeat scroll 0 0;}
+
+.navbar-default .navbar-nav>.active>a,
+.navbar-default .navbar-nav>.active>a:hover,
+.navbar-default .navbar-nav>.active>a:focus {
+    color: #f50079 !important;
+    background-color: transparent;
+}
+.navbar-default .navbar-nav>.open>a,
+.navbar-default .navbar-nav>.open>a:hover,
+.navbar-default .navbar-nav>.open>a:focus {
+    color: #f50079 !important;
+    background-color: transparent;
+}
+
+.menu-top li a:hover { color: #f50079!important }
+
+.navbar-default.menu-shrink li a:hover { color: #f50079 !important }
+.navbar-default .navbar-toggle .icon-bar { background-color: #f50079 }
+
+.btn-register-bg {background: #f50079 none repeat scroll 0 0;}
+
+.single_feature i {color: #f50079;}
+
+.single_offer:hover h4 { color: #f50079 }
+
+.panel-title a::after {
+background: #fff none repeat scroll 0 0;
+color: #f50079;
+content: "";
+float: left;
+font: 18px/55px fontAwesome;
+height: 49px;
+margin-left: -16px;
+margin-right: 25px;
+margin-top: -16px;
+text-align: center;
+width: 49px;
+}
+.panel-title a.collapsed::after {
+background: #fff none repeat scroll 0 0;
+color: #f50079;
+content: "";
+float: left;
+font: 18px/55px fontAwesome;
+height: 49px;
+margin-left: -16px;
+margin-right: 25px;
+margin-top: -16px;
+text-align: center;
+width: 49px;
+}
+
+.carousel .slide-control {background: #f50079 none repeat scroll 0 0;}
+
+.buy_now {background: #f50079 none repeat scroll 0 0;}
+
+.btn-light-bg-two {
+  background: #f50079 none repeat scroll 0 0;
+  border: 2px solid #f50079;
+}
+
+.newsletter {
+  background: #f50079 none repeat scroll 0 0;
+}
+
+.work figure.effect-ruby h2 {color: #f50079;}
+
+.testimonials .flex-direction-nav a {background: #f50079 none repeat scroll 0 0;}
+
+.single-pricing-bg {
+  background: #f50079 none repeat scroll 0 0;
+}
+.testimonials .flexslider .testi-slider-item img {border: 3px solid #f50079;}
+
+.pricing-price-bg {
+  background: #f50079 none repeat scroll 0 0;
+}
+
+.single_blog:hover h4 { color: #f50079 }
+
+.contact input:focus {border: 1px solid #f50079;}
+.contact textarea:focus {border: 1px solid #f50079;}
+
+.single_address i {color: #f50079;}
+
+.footer_copyright a:hover{color:#f50079;}
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,98 @@
+#style-switcher h2 a { background: #452cbb none repeat scroll 0 0 }
+
+.topcontrol {background: #452cbb none repeat scroll 0 0;}
+
+
+.navbar-default .navbar-nav>.active>a,
+.navbar-default .navbar-nav>.active>a:hover,
+.navbar-default .navbar-nav>.active>a:focus {
+    color: #452cbb !important;
+    background-color: transparent;
+}
+.navbar-default .navbar-nav>.open>a,
+.navbar-default .navbar-nav>.open>a:hover,
+.navbar-default .navbar-nav>.open>a:focus {
+    color: #452cbb !important;
+    background-color: transparent;
+}
+
+.menu-top li a:hover { color: #452cbb!important }
+
+.navbar-default.menu-shrink li a:hover { color: #452cbb !important }
+.navbar-default .navbar-toggle .icon-bar { background-color: #452cbb }
+
+.btn-register-bg {background: #452cbb none repeat scroll 0 0;}
+
+.single_feature i {color: #452cbb;}
+
+.single_offer:hover h4 { color: #452cbb }
+
+.panel-title a::after {
+background: #fff none repeat scroll 0 0;
+color: #452cbb;
+content: "";
+float: left;
+font: 18px/55px fontAwesome;
+height: 49px;
+margin-left: -16px;
+margin-right: 25px;
+margin-top: -16px;
+text-align: center;
+width: 49px;
+}
+.panel-title a.collapsed::after {
+background: #fff none repeat scroll 0 0;
+color: #452cbb;
+content: "";
+float: left;
+font: 18px/55px fontAwesome;
+height: 49px;
+margin-left: -16px;
+margin-right: 25px;
+margin-top: -16px;
+text-align: center;
+width: 49px;
+}
+
+.carousel .slide-control {background: #452cbb none repeat scroll 0 0;}
+
+.buy_now {background: #452cbb none repeat scroll 0 0;}
+
+.btn-light-bg-two {
+  background: #452cbb none repeat scroll 0 0;
+  border: 2px solid #452cbb;
+}
+
+.newsletter {
+  background: #452cbb none repeat scroll 0 0;
+}
+
+.work figure.effect-ruby h2 {color: #452cbb;}
+
+.testimonials .flex-direction-nav a {background: #452cbb none repeat scroll 0 0;}
+
+.single-pricing-bg {
+  background: #452cbb none repeat scroll 0 0;
+}
+.testimonials .flexslider .testi-slider-item img {border: 3px solid #452cbb;}
+.pricing-price-bg {
+  background: #452cbb none repeat scroll 0 0;
+}
+
+.single_blog:hover h4 { color: #452cbb }
+
+.contact input:focus {border: 1px solid #452cbb;}
+.contact textarea:focus {border: 1px solid #452cbb;}
+
+.single_address i {color: #452cbb;}
+
+.footer_copyright a:hover{color:#452cbb;}
+
+
+
+
+
+
+
+
+

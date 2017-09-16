@@ -1,0 +1,98 @@
+#style-switcher h2 a { background: #ed703a none repeat scroll 0 0 }
+
+.topcontrol {background: #ed703a none repeat scroll 0 0;}
+
+.navbar-default .navbar-nav>.active>a,
+.navbar-default .navbar-nav>.active>a:hover,
+.navbar-default .navbar-nav>.active>a:focus {
+    color: #ed703a !important;
+    background-color: transparent;
+}
+.navbar-default .navbar-nav>.open>a,
+.navbar-default .navbar-nav>.open>a:hover,
+.navbar-default .navbar-nav>.open>a:focus {
+    color: #ed703a !important;
+    background-color: transparent;
+}
+
+.menu-top li a:hover { color: #ed703a!important }
+
+.navbar-default.menu-shrink li a:hover { color: #ed703a !important }
+.navbar-default .navbar-toggle .icon-bar { background-color: #ed703a }
+
+.btn-register-bg {background: #ed703a none repeat scroll 0 0;}
+
+.single_feature i {color: #ed703a;}
+
+.single_offer:hover h4 { color: #ed703a }
+
+.panel-title a::after {
+background: #fff none repeat scroll 0 0;
+color: #ed703a;
+content: "";
+float: left;
+font: 18px/55px fontAwesome;
+height: 49px;
+margin-left: -16px;
+margin-right: 25px;
+margin-top: -16px;
+text-align: center;
+width: 49px;
+}
+.panel-title a.collapsed::after {
+background: #fff none repeat scroll 0 0;
+color: #ed703a;
+content: "";
+float: left;
+font: 18px/55px fontAwesome;
+height: 49px;
+margin-left: -16px;
+margin-right: 25px;
+margin-top: -16px;
+text-align: center;
+width: 49px;
+}
+
+.carousel .slide-control {background: #ed703a none repeat scroll 0 0;}
+
+.buy_now {background: #ed703a none repeat scroll 0 0;}
+
+.btn-light-bg-two {
+  background: #ed703a none repeat scroll 0 0;
+  border: 2px solid #ed703a;
+}
+
+.newsletter {
+  background: #ed703a none repeat scroll 0 0;
+}
+
+.work figure.effect-ruby h2 {color: #ed703a;}
+
+.testimonials .flex-direction-nav a {background: #ed703a none repeat scroll 0 0;}
+
+.single-pricing-bg {
+  background: #ed703a none repeat scroll 0 0;
+}
+.testimonials .flexslider .testi-slider-item img {border: 3px solid #ed703a;}
+
+.pricing-price-bg {
+  background: #ed703a none repeat scroll 0 0;
+}
+
+.single_blog:hover h4 { color: #ed703a }
+
+.contact input:focus {border: 1px solid #ed703a;}
+.contact textarea:focus {border: 1px solid #ed703a;}
+
+.single_address i {color: #ed703a;}
+
+.footer_copyright a:hover{color:#ed703a;}
+
+
+
+
+
+
+
+
+
