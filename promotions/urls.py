@@ -21,6 +21,10 @@ from rest_framework.urlpatterns import format_suffix_patterns
 from promotions import views
 
 urlpatterns = [
+    url(
+        r'^$'
+        , views.promotion , name='promotion'
+    ),
     url(r'^api/$'
         , views.vwListPromotion.as_view()
         , name='promotion-list'),

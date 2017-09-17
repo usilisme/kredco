@@ -23,7 +23,7 @@ def about(request):
 
 def signup(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = SignUpForm(request.POST)
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
@@ -33,7 +33,16 @@ def signup(request):
             return redirect('index')
     else:
         form = SignUpForm()
-    return render(request, 'signup.html', {'form': form})
+    return render(request, 'index.html', {'form': form})
+
+def myprofile(request):
+    return render(request,'myprofile.html')
+
+def merchant(request):
+    return render(request,'merchant.html')
+
+def payment(request):
+    return render(request,'payment.html')
 
 #API
 @api_view(['GET'])

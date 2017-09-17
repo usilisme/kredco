@@ -31,6 +31,7 @@
 		<!-- CSS FOR COLOR SWITCHER -->
 		<link rel="stylesheet" href="{% static "css/switcher/switcher.css" %}">
 		<link rel="stylesheet" href="{% static "css/switcher/style1.css" %}" id="colors">
+		<link rel="stylesheet" href="{% static "css/kredco.css" %}">
 	{% endblock stylesheets %}
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -65,13 +66,78 @@
 			<script src="{% static "js/scripts.js" %}"></script>
 		{% endblock scripts %}
 	</head>
-    {% block content %}
+    
 	<body>
-		<div class="content">
-			
+		{% block navbar %}
+		<!-- START NAVBAR -->
+		<div class="navbar navbar-default navbar-fixed-top menu-top">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a href="index.html" class="navbar-brand"><img src="assets/img/logo.png" alt="logo"></a>
+				</div>
+				<div class="navbar-collapse collapse">
+					<nav>
+						<ul class="nav navbar-nav navbar-right">
+							<li><a class="page-scroll" href="/">Home</a></li>
+							<li><a class="page-scroll" href="#about">About</a></li>
+							<li><a class="page-scroll" href="#team">Team</a></li>
+							<li><a class="page-scroll" href="/promotion/">Promotions</a></li>
+							<li><a class="page-scroll" href="/merchant/">Merchants</a></li>
+							<li><a class="page-scroll" href="#pricing">Pricing</a></li>
+							<li><a class="page-scroll" href="#blog">Blog</a></li>
+							<li><a class="page-scroll" href="#faq">Faq</a></li>
+							<li><a class="page-scroll" href="#contact">Contact</a></li>
+							<li>
+								{% if user.is_authenticated %}
+									<a class="page-scroll" href="/myprofile/">My Profile</a>
+								{% else %}
+									<a class="page-scroll" href="/login/">Login</a>
+								{% endif %}
+							</li>
+						</ul>
+					</nav>
+				</div> 
+			</div><!--- END CONTAINER -->
+		</div> 
+		<!-- END NAVBAR -->
+		{% endblock navbar%}
+		
+		{% block content %}
+			<div class="content">
 				<h1>KRED.CO</h1>
-			
-		</div>
-    </body>
-	{% endblock content %}
+			</div>
+		{% endblock content %}
+		
+		{% block footer%}
+		<!-- START FOOTER BOTTOM -->
+		<footer class="footer">
+			<div class="container">
+				<div class="row wow bounceInUp" data-wow-delay=".4s">
+					<div class="col-md-12 col-sm-12 col-xs-12 text-center">
+						<a href="index.html"><img src="assets/img/logo.png" alt="logo"></a>
+						<div class="footer_social">
+							<ul>
+								<li><a class="f_facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+								<li><a class="f_twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+								<li><a class="f_google" href="#"><i class="fa fa-google-plus"></i></a></li>
+								<li><a class="f_linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
+								<li><a class="f_youtube" href="#"><i class="fa fa-youtube"></i></a></li>
+								<li><a class="f_skype" href="#"><i class="fa fa-skype"></i></a></li>
+							</ul>
+						</div>
+						<p class="footer_copyright">&copy; 2017 <a href="#">Yuafa</a> All Rights Reserved.</p>	
+					</div><!--- END COL -->
+				</div><!--- END ROW -->
+			</div><!--- END CONTAINER -->
+		</footer>
+		<!-- END FOOTER BOTTOM-->	
+		{% endblock footer%}
+	</body>
+	
 </html>

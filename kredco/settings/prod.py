@@ -2,9 +2,6 @@ from .base import *
 
 DEBUG = False
 
-# Database
-# https://docs.djangoproject.com/en/1.11/ref/settings/#databases
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -16,4 +13,8 @@ DATABASES = {
     }
 }
 
-STATIC_ROOT = '/home/static/'
+STATIC_ROOT = '/home/hendra/static/'
+STATICFILES_DIRS = [STATIC_ROOT,STATIC_DIR, ]
+
+MEDIA_DIR = '/home/hendra/media/'
+MEDIA_ROOT = MEDIA_DIR

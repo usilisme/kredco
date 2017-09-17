@@ -7,7 +7,13 @@ from django.db.models import (
 
 class Promotion (Model):
     name = CharField(max_length = 500)
-    imagebanner = ImageField(upload_to='media/images/promotions/')
+    description = CharField(
+        max_length= 1000, default=''
+    )
+    CategoryPromotion = CharField(
+        max_length=50, default='Uncategorized'
+    )
+    imagebanner = ImageField(upload_to='img/promotions/')
     datestart = DateField()
     dateend = DateField()
     def __str__(self):

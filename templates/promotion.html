@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+	
+	
+    <body data-spy="scroll" data-offset="80">
+		{% block content %}
+		<!-- START KRED PROMOTION AREA -->
+		<section id="work" class="work section-padding">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="section-title text-center">
+							<h2>Latest Promotions</h2>
+							<p>Beberapa promosi menarik yang dihadirkan khusus untuk para pengguna KRED.</p>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<ul class="work">
+						<li class="filter" data-filter="all">all</li>
+						<li class="filter" data-filter=".automotive">automotive</li>
+						<li class="filter" data-filter=".audio">audio</li>
+						<li class="filter" data-filter=".photography">photography</li>
+					</ul>
+				</div>
+				<div class="work-inner">
+					<div class="row work-posts grid">
+					{% for promotion in promotions %}
+						<!-- START SINGLE WORK DESIGN AREA -->
+						<div class="col-md-4 col-sm-6 mix {{promotion.CategoryPromotion}}">
+							<div class="item">
+								<a href="assets/img/work/1.jpg" class="work-popup">
+									<figure class="effect-ruby">
+										<img src="{{ promotion.imagebanner.url }}" alt="image">
+										<figcaption>
+											<h2>{{ promotion.name }}</h2>
+											<p>{{promotion.description}}</p>
+										</figcaption>
+									</figure>
+								</a>
+							</div>
+						</div>
+						<!-- END SINGLE WORK DESIGN AREA -->
+					{% endfor %}
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- / END KRED PROMOTION AREA -->
+		{% endblock %}
+    </body>

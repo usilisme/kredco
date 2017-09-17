@@ -43,6 +43,9 @@ urlpatterns = [
     url(r'^login/$'
         , auth_views.login, name='login'
         ),
+    url(r'^myprofile/$'
+        ,views.myprofile, name='myprofile'
+    ),
     url(r'^logout/$'
         , auth_views.logout
         ,{'template_name':'registration/logout.html'}
@@ -53,7 +56,13 @@ urlpatterns = [
   url(r'^reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
       auth_views.password_reset_confirm, name='password_reset_confirm'),
   url(r'^reset/done/$', auth_views.password_reset_complete, name='password_reset_complete'),
+    url(r'^merchant/$'
+        ,views.merchant, name='merchant'
+    ),
 
+    url(r'^payment/$'
+        ,views.payment, name='payment'
+    ),
     #API
     url(r'^api-auth/'
         ,include('rest_framework.urls',namespace='rest_framework')
@@ -77,6 +86,8 @@ urlpatterns = [
     url(r'^transactions/'
         , include('transactions.urls', namespace='transactions')
         ),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
+urlpatterns+= static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns+= static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 

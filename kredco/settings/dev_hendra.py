@@ -2,7 +2,7 @@ from kredco.settings.base import *
 
 DEBUG = True
 
-MEDIA_DIR = os.path.join(BASE_DIR,'media')
+
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
@@ -13,5 +13,9 @@ DATABASES = {
     }
 }
 
+STATICFILES_DIRS = [STATIC_DIR,]
+
+MEDIA_DIR = os.path.join(BASE_DIR,'media')
 MEDIA_ROOT = MEDIA_DIR
-MEDIA_URL = '/media/'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # During development only

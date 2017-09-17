@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+	
+	
+    <body data-spy="scroll" data-offset="80">
+		{% block content %}
+		<!-- START HOME -->
+		
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8 col-sm-12 col-xs-12">
+						<div class="payment-form">
+							<h4 class="login_register_title">Form Pembayaran</h4>
+							<div class="form-group">
+								<input type="text" class=" form-control requiredField input-label" placeholder="Nama Penerima" name="name">
+							</div>
+							<div class="form-group">
+								<input type="text" class=" form-control requiredField input-label" placeholder="Nomor Telepon Penerima" name="name">
+							</div>
+							<div class="form-group">
+								<input type="email" class="form-control requiredField input-label" placeholder="Nama Bank" name="email" >
+							</div>
+							<div class="form-group">
+								<input type="email" class="form-control requiredField input-label" placeholder="Nomor Rekening" name="email" >
+							</div>
+							<div class="form-group">
+								<input type="email" class="form-control requiredField input-label" placeholder="Jumlah Pembayaran" name="email" >
+							</div>
+							<div class="form-group">
+								<input type="email" class="form-control requiredField input-label" placeholder="Jenis Keperluan" name="email" >
+							</div>
+							<div class="form-group">
+								<input type="email" class="form-control requiredField input-label" placeholder="Nama Pemilik Kartu Kredit" name="email" >
+							</div>
+							<div class="form-group">
+								<input type="email" class="form-control requiredField input-label" placeholder="Nomor Kartu Kredit" name="email" >
+							</div>
+							<div class="form-group">
+								<input type="email" class="form-control requiredField input-label" placeholder="Tanggal Berlaku Kartu Kredit" name="email" >
+							</div>
+							<div class="form-group">
+								<input type="email" class="form-control requiredField input-label" placeholder="CCV" name="email" >
+							</div>
+							<div class="form-group mbnone text-center">
+								<button class="btn btn-register-bg" type="submit" name="submit">signup now</button>
+							</div>
+						</div>
+					</div><!-- END COL-->
+				</div><!-- END ROW-->
+			</div><!-- END CONTAINER-->
+		<!-- END  HOME DESIGN -->
+
+			{% endblock %}
+    </body>

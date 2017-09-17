@@ -1,55 +1,9 @@
 {% extends 'base.html' %}
 
 	
-	{% block content %}
+	
     <body data-spy="scroll" data-offset="80">
-
-		<!-- START PRELOADER -->
-		<div class="preloader">
-			<div class="status">
-				<div class="status-mes"><h4>WELCOME TO KRED.CO</h4></div>
-			</div>
-		</div>
-		<!-- END PRELOADER -->	
-
-		<!-- START NAVBAR -->
-		<div class="navbar navbar-default navbar-fixed-top menu-top">
-			<div class="container">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<a href="index.html" class="navbar-brand"><img src="assets/img/logo.png" alt="logo"></a>
-				</div>
-				<div class="navbar-collapse collapse">
-					<nav>
-						<ul class="nav navbar-nav navbar-right">
-							<li><a class="page-scroll" href="#home">Home</a></li>
-							<li><a class="page-scroll" href="#about">About</a></li>
-							<li><a class="page-scroll" href="#team">Team</a></li>
-							<li><a class="page-scroll" href="#work">Promotions</a></li>
-							<li><a class="page-scroll" href="#review">Reviews</a></li>
-							<li><a class="page-scroll" href="#pricing">Pricing</a></li>
-							<li><a class="page-scroll" href="#blog">Blog</a></li>
-							<li><a class="page-scroll" href="#faq">Faq</a></li>
-							<li><a class="page-scroll" href="#contact">Contact</a></li>
-							<li>
-								{% if user.is_authenticated %}
-									<a class="page-scroll" href="/logout/">Logout</a>
-								{% else %}
-									<a class="page-scroll" href="/login/">Login</a>
-								{% endif %}
-							</li>
-						</ul>
-					</nav>
-				</div> 
-			</div><!--- END CONTAINER -->
-		</div> 
-		<!-- END NAVBAR -->
-		
+		{% block content %}
 		<!-- START HOME -->
 		<section data-stellar-background-ratio="0.3" id="home" class="home-parallax"  style="background-image: url(assets/img/bg/home.jpg);  background-size:cover; background-position: center center;">
 			<div class="container">
@@ -67,6 +21,22 @@
 					<div class="col-md-4 col-sm-12 col-xs-12">
 						<div class="register">
 							<h4 class="login_register_title">Create a new account:</h4>
+							<form method="post">
+							{% csrf_token %}
+							{% for field in form %}
+							  <p>
+								{{ field.label_tag }}<br>
+								{{ field }}
+								{% if field.help_text %}
+								  <small style="color: grey">{{ field.help_text }}</small>
+								{% endif %}
+								{% for error in field.errors %}
+								  <p style="color: red">{{ error }}</p>
+								{% endfor %}
+							  </p>
+							{% endfor %}
+							<button type="submit">Sign up</button>
+						  </form>
 							<div class="form-group">
 								<input type="text" class=" form-control requiredField input-label" placeholder="Username" name="name">
 							</div>
@@ -421,7 +391,7 @@
 		<!-- PROMOTION -->
 		<section class="buy_now">
 			<div class="container text-center wow bounceInUp" data-wow-delay=".1s">
-				<h3 class="buy_now_title">The best solution for your startup<a href="#contact" class="btn btn-default btn-promotion-bg page-scroll">Get start</a> </h3>
+				<h3 class="buy_now_title">Tunggu Apa Lagi? Segera coba sekarang.<a href="/payment/" class="btn btn-default btn-promotion-bg page-scroll">Pay Now with KRED</a> </h3>
 			</div><!--- END CONTAINER -->
 		</section>
 		<!-- END PROMOTION -->	
@@ -631,7 +601,7 @@
         </section>
 		<!--- END TESTIMONIAL -->
 	
-		<!-- START COMPANY PARTNER LOGO  -->
+		<!-- START MERCHANTS  -->
 		<div class="partner-logo section-padding">
 			<div class="partner_overlay">
 				<div class="container">
@@ -656,7 +626,7 @@
 				</div><!-- END CONTAINER  -->
 			</div><!-- END OVERLAY -->
 		</div>
-		<!-- END COMPANY PARTNER LOGO -->
+		<!-- END MERCHANTS -->
 
 		<!-- START PRICING TABLE -->
 		<section id="pricing" class="our_pricing section-padding">
@@ -940,52 +910,5 @@
 			</div><!--- END CONTAINER -->	
 		</section>
 		<!-- END ADDRESS -->
-		
-		<!-- START FOOTER BOTTOM -->
-		<footer class="footer">
-			<div class="container">
-				<div class="row wow bounceInUp" data-wow-delay=".4s">
-					<div class="col-md-12 col-sm-12 col-xs-12 text-center">
-						<a href="index.html"><img src="assets/img/logo.png" alt="logo"></a>
-						<div class="footer_social">
-							<ul>
-								<li><a class="f_facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-								<li><a class="f_twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-								<li><a class="f_google" href="#"><i class="fa fa-google-plus"></i></a></li>
-								<li><a class="f_linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
-								<li><a class="f_youtube" href="#"><i class="fa fa-youtube"></i></a></li>
-								<li><a class="f_skype" href="#"><i class="fa fa-skype"></i></a></li>
-							</ul>
-						</div>
-						<p class="footer_copyright">&copy; 2017 <a href="#">Yuafa</a> All Rights Reserved.</p>	
-					</div><!--- END COL -->
-				</div><!--- END ROW -->
-			</div><!--- END CONTAINER -->
-		</footer>
-		<!-- END FOOTER BOTTOM-->	
-
-		<!-- STYLE SWITCHER -->
-		 <div id="style-switcher">
-			<h2>Your Awesome Color<a href="#"><i class="fa fa-cog fa-spin"></i></a></h2>
-			<div>
-			  <ul class="colors" id="color1">
-				<li><a href="#" class="style1"></a></li>
-				<li><a href="#" class="style2"></a></li>
-				<li><a href="#" class="style3"></a></li>
-				<li><a href="#" class="style4"></a></li>
-				<li><a href="#" class="style5"></a></li>
-				<li><a href="#" class="style6"></a></li>
-				<li><a href="#" class="style7"></a></li>
-				<li><a href="#" class="style8"></a></li>
-				<li><a href="#" class="style9"></a></li>
-				<li><a href="#" class="style10"></a></li>
-				<li><a href="#" class="style11"></a></li>
-				<li><a href="#" class="style12"></a></li>
-			  </ul>
-			</div>
-		 </div>  
-		 <!-- END OF STYLE SWITCHER -->
-		
-		
+			{% endblock %}
     </body>
-	{% endblock %}

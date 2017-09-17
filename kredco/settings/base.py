@@ -15,7 +15,6 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
 
 
@@ -24,8 +23,6 @@ STATIC_DIR = os.path.join(BASE_DIR, 'static')
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '2e3&x)u^zyia0@g)orc7+jb2ykyf_q+bb+7-ktfs!so&m$8#yp'
-
-
 
 ALLOWED_HOSTS = [
     '128.199.253.80','.kred.co',
@@ -127,8 +124,8 @@ USE_L10N = True
 
 USE_TZ = True
 
-STATICFILES_DIRS = [STATIC_DIR, ]
 STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
 
 LOGIN_URL = 'login/'
 LOGIN_REDIRECT_URL = '/'
