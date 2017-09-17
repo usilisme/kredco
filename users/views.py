@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+
+from django.shortcuts import render
 from datetime import date
 from rest_framework import viewsets, status, generics, permissions
 from rest_framework.generics import (
@@ -24,7 +26,18 @@ from users.serializers import (
     szGetUser,szGetUserProfile,szResetPass
 )
 
+from cards.models import Card
+from transactions.models import Transaction
+
 User = get_user_model()
+
+#SITE
+def myprofile(request):
+    mycards = Card.objects.filter(owner = request.user)
+    context = {'mycards':mycards}
+    transactions =  Transaction.objects.filter(payer = request.user)
+    context['mytransactions'] = transactions
+    return render(request, 'myprofile.html', context)
 
 ### Start of the DRY Code ###
 class vwCrUser(CreateAPIView):

@@ -23,6 +23,12 @@ from users import views
 router = routers.DefaultRouter()
 
 urlpatterns = [
+    #SITE
+    url(r'^myprofile/$'
+        ,views.myprofile, name='myprofile'
+    ),
+
+    #API
     url(r'^api/register/$', views.vwCrUser.as_view(), name='register'),
     url(r'^api/login/$', views.vwLoginUser.as_view(),name = 'login'),
     url(r'^api/(?P<username>[\w-]+)/$'

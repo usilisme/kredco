@@ -1,3 +1,10 @@
+ENVIRONMENT REQUIREMENT
+django-rest-framework
+djangorestframework-jwt
+Pillow
+
+
+<128.199.253.80:8888>
 /promotions/api/			#Get all the active promotion banners based on the logic dateFr<=Todat<=dateTo.
 /merchants/api/				#Get all the merchants.
 /merchants/api/?search=roti		#Search all the merchants which names contains "roti"

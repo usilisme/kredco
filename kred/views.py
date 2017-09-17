@@ -38,9 +38,6 @@ def signup(request):
 def myprofile(request):
     return render(request,'myprofile.html')
 
-def merchant(request):
-    return render(request,'merchant.html')
-
 def payment(request):
     return render(request,'payment.html')
 

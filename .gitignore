@@ -1,8 +1,12 @@
 #Compiled Python File
 *.pyc
 
-#DEV Database SQLite
+#DEVELOPMENT only files
 db.sqlite3
+media/
+
+#Migrations Script
+**/migrations
 
 # Windows image file caches
 Thumbs.db

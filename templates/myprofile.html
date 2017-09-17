@@ -37,126 +37,81 @@
 			</div><!-- END CONTAINER -->
 		</section>
 		<!-- END -->
-
-		<!-- START MY-TRANSACTION -->
-		<section id="faq" class="template_faq">
-			<div class="container">
-				<div class="row">
-					<div class="section-title text-center">
-						<h2>Frequently Asked Questions</h2>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-					</div>					
-					<div class="col-md-6 col-sm-6 col-xs-12">
-						<div class="faq_desc">
-							<p class="question">Q. How do I become an author?</p>
-							<p class="ans">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, dolorum, vero ipsum molestiae minima odio quo voluptate illum excepturi quam cum voluptates doloribus.</p>
-						</div>
-					</div><!--- END COL -->
-					<div class="col-md-6 col-sm-6 col-xs-12">
-						<div class="faq_desc">
-							<p class="question">Q. How much money can I make?</p>
-							<p class="ans">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, dolorum, vero ipsum molestiae minima odio quo voluptate illum excepturi quam cum voluptates doloribus.</p>
-						</div>
-					</div><!--- END COL -->
-					<div class="col-md-6 col-sm-6 col-xs-12">
-						<div class="faq_desc">
-							<p class="question">Q. Helpful Resources for Authors</p>
-							<p class="ans">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, dolorum, vero ipsum molestiae minima odio quo voluptate illum excepturi quam cum voluptates doloribus.</p>
-						</div>
-					</div><!--- END COL -->
-					<div class="col-md-6 col-sm-6 col-xs-12">
-						<div class="faq_desc">
-							<p class="question">Q. How can I get support item which isn't working correctly?</p>
-							<p class="ans">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, dolorum, vero ipsum molestiae minima odio quo voluptate illum excepturi quam cum voluptates doloribus.</p>
-						</div>
-					</div><!--- END COL -->
-					<div class="col-md-6 col-sm-6 col-xs-12">
-						<div class="faq_desc">
-							<p class="question">Q. How do I pay for items on the Marketplaces?</p>
-							<p class="ans">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, dolorum, vero ipsum molestiae minima odio quo voluptate illum excepturi quam cum voluptates doloribus.</p>
-						</div>
-					</div><!--- END COL -->
-					<div class="col-md-6 col-sm-6 col-xs-12">
-						<div class="faq_desc">
-							<p class="question">Q. What Images, Videos, Code or Music Can I Use in my Items?</p>
-							<p class="ans">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, dolorum, vero ipsum molestiae minima odio quo voluptate illum excepturi quam cum voluptates doloribus.</p>
-						</div>
-					</div><!--- END COL -->
-				</div><!--- END ROW -->
-			</div><!--- END CONTAINER -->
-		</section>
-		<!-- END -->
+		
+		{{request.user.username}}
+		{{request.user.first_name}}
+		{{request.user.last_name}}
+		{{request.user.email}}
 		
 		<!-- START MY-CARD -->
 		<section class="our_offer section-padding">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-4 col-sm-4 col-xs-12 wow fadeInLeft" data-wow-delay=".2s">
+					<div class="section-title text-center wow zoomIn">
+						<h2>My Cards</h2>
+						<div class="line"></div>
+						<p>List of my credit cards.</p>
+					</div>					
+					{% for card in mycards %}
+					<div class="col-sm-4">	
 						<div class="single_offer">
 							<div class="single_offer_img">
-								<img src="assets/img/offer_1.jpg" class="img-responsive" alt="" />
+								<img src="{{card.logo.url}}" class="img-responsive" alt="" />
 							</div>
-							<h4>International accounting</h4>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi perferendis magnam ea necessitatibus, officiis voluptas odit.</p>
+							<h4>************{{card.number}}</h4>
+							<p>{{card.type}}</p>
 						</div>	
+						
 					</div><!-- END COL -->
-					<div class="col-md-4 col-sm-4 col-xs-12 wow fadeInLeft" data-wow-delay=".3s">
-						<div class="single_offer">
-							<div class="single_offer_img">
-								<img src="assets/img/offer_2.jpg" class="img-responsive" alt="" />
-							</div>
-							<h4>Financial consulting</h4>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi perferendis magnam ea necessitatibus, officiis voluptas odit.</p>
-						</div>	
-					</div><!-- END COL -->
-					<div class="col-md-4 col-sm-4 col-xs-12 wow fadeInLeft" data-wow-delay=".4s">
-						<div class="single_offer">
-							<div class="single_offer_img">
-								<img src="assets/img/offer_3.jpg" class="img-responsive" alt="" />
-							</div>
-							<h4>Financial &amp; business</h4>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi perferendis magnam ea necessitatibus, officiis voluptas odit.</p>
-						</div>	
-					</div><!-- END COL -->
-				</div><!-- END ROW -->
-			</div><!-- END CONTAINER -->
+					{% endfor %}
+				</div>
+			</div>
 		</section>
 		<!-- END OFFER -->
 		
-		<!-- START MY-FAVOURITE-MERCHANT -->
-		<section class="our_offer section-padding">
+		<!-- START CONTACT FORM -->
+		<section id="contact" class="contact_area section-padding">
 			<div class="container">
-				<div class="row">
-					<div class="col-md-4 col-sm-4 col-xs-12 wow fadeInLeft" data-wow-delay=".2s">
-						<div class="single_offer">
-							<div class="single_offer_img">
-								<img src="assets/img/offer_1.jpg" class="img-responsive" alt="" />
-							</div>
-							<h4>International accounting</h4>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi perferendis magnam ea necessitatibus, officiis voluptas odit.</p>
-						</div>	
-					</div><!-- END COL -->
-					<div class="col-md-4 col-sm-4 col-xs-12 wow fadeInLeft" data-wow-delay=".3s">
-						<div class="single_offer">
-							<div class="single_offer_img">
-								<img src="assets/img/offer_2.jpg" class="img-responsive" alt="" />
-							</div>
-							<h4>Financial consulting</h4>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi perferendis magnam ea necessitatibus, officiis voluptas odit.</p>
-						</div>	
-					</div><!-- END COL -->
-					<div class="col-md-4 col-sm-4 col-xs-12 wow fadeInLeft" data-wow-delay=".4s">
-						<div class="single_offer">
-							<div class="single_offer_img">
-								<img src="assets/img/offer_3.jpg" class="img-responsive" alt="" />
-							</div>
-							<h4>Financial &amp; business</h4>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi perferendis magnam ea necessitatibus, officiis voluptas odit.</p>
-						</div>	
-					</div><!-- END COL -->
-				</div><!-- END ROW -->
-			</div><!-- END CONTAINER -->
+				<div class="row">	
+					<div class="section-title text-center wow zoomIn">
+						<h2>My Latest Transaction</h2>
+						<div class="line"></div>
+						<p>List of the latest transaction.</p>
+					</div>								
+					<div class="col-md-12 col-sm-12 col-xs-12">
+						<div class="contact">
+							<form id="contact-form" method="post" enctype="multipart/form-data">
+								<div class="row">
+									<div class="form-group col-md-4 text-center">
+										Merchant
+									</div>
+									<div class="form-group col-md-4 text-center">
+										Amount
+									</div>
+									<div class="form-group col-md-4 text-center">
+										Card
+									</div>
+								</div>
+								{% for transaction in mytransactions %}
+								<div class="row">
+									<div class="form-group col-md-4">
+										{{ transaction.merchant }}
+									</div>
+									<div class="form-group col-md-4">
+										{{transaction.amount}}
+									</div>
+									<div class="form-group col-md-4">
+										{{transaction.card}}
+									</div>
+								</div>
+								{% endfor %}
+							</form>
+						</div>
+					</div><!-- END COL -->						
+				</div><!--- END ROW -->				
+			</div><!--- END CONTAINER -->	
 		</section>
-		<!-- END OFFER -->
+		<!-- END CONTACT FORM  -->
+		
 			{% endblock %}
     </body>

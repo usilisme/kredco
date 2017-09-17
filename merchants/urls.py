@@ -21,6 +21,12 @@ from rest_framework.urlpatterns import format_suffix_patterns
 from merchants import views
 
 urlpatterns = [
+    #SITE
+    url(r'^$'
+        ,views.merchants, name='merchant'
+    ),
+
+    #API
     url(r'^api/$'
         , views.vwListMerchant.as_view()
         , name='merchant-list'),
