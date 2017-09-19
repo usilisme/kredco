@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+    <head>
+		<!-- Meta -->
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1"> 
+		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+		<!-- SITE TITLE -->
+		<title>Yuafa - Easy Startup Landing Page</title>
+	{% block stylesheets %}
+		<link href="{% static "/css/bootstrap.min.css" %}" rel="stylesheet" type="text/css" />
+        <link href="{% static "/css/core.css" %}" rel="stylesheet" type="text/css" />
+        <link href="{% static "/css/components.css" %}" rel="stylesheet" type="text/css" />
+        <link href="{% static "/css/icons.css" %}" rel="stylesheet" type="text/css" />
+        <link href="{% static "/css/pages.css" %}" rel="stylesheet" type="text/css" />
+        <link href="{% static "/css/menu.css" %}" rel="stylesheet" type="text/css" />
+        <link href="{% static "/css/responsive.css" %}" rel="stylesheet" type="text/css" />
+		<link href="{% static "/plugins/datatables/jquery.dataTables.min.css" %}" rel="stylesheet" type="text/css"/>
+		<link href="{% static "/plugins/datatables/buttons.bootstrap.min.css" %}" rel="stylesheet" type="text/css"/>
+		<link href="{% static "/plugins/datatables/dataTables.bootstrap.min.css" %}" rel="stylesheet" type="text/css"/>
+	{% endblock stylesheets %}
+	{% block scripts %}
+		<!-- jQuery  -->
+		<script src="{% static "/js/jquery.min.js" %}"></script>
+		<script src="{% static "/js/bootstrap.min.js" %}"></script>
+		<script src="{% static "/js/detect.js" %}"></script>
+		<script src="{% static "/js/fastclick.js" %}"></script>
+		<script src="{% static "/js/jquery.slimscroll.js" %}"></script>
+		<script src="{% static "/js/jquery.blockUI.js" %}"></script>
+		<script src="{% static "/js/waves.js" %}"></script>
+		<script src="{% static "/js/wow.min.js" %}"></script>
+		<script src="{% static "/js/jquery.nicescroll.js" %}"></script>
+		<script src="{% static "/js/jquery.scrollTo.min.js" %}"></script>
+
+		<!-- App core js -->
+		<script src="{% static "/js/jquery.core.js" %}"></script>
+		<script src="{% static "/js/jquery.app.js" %}"></script>
+		
+		<script src="{% static "/plugins/datatables/jquery.dataTables.min.js" %}"></script>
+		<script src="{% static "/plugins/datatables/dataTables.bootstrap.js" %}"></script>
+
+		<script src="{% static "/plugins/datatables/buttons.bootstrap.min.js" %}"></script>
+		<script src="{% static "/plugins/jquery-datatables-editable/dataTables.bootstrap.js" %}"></script>
+		<script src="{% static "/pages/datatables.init.js" %}"></script>
+		<script>
+        	var handleDataTableButtons = function() {
+		        $("#datatable").DataTable({
+		            dom: "Bfrtip",
+		            buttons: [{
+		                extend: "copy",
+		                className: "btn-sm"
+		            }, {
+		                extend: "csv",
+		                className: "btn-sm"
+		            }, {
+		                extend: "excel",
+		                className: "btn-sm"
+		            }, {
+		                extend: "pdf",
+		                className: "btn-sm"
+		            }, {
+		                extend: "print",
+		                className: "btn-sm"
+		            }],
+		            responsive: !0
+		        })
+		    },
+		    TableManageButtons = function() {
+		        "use strict";
+		        return {
+		            init: function() {
+		                handleDataTableButtons()
+		            }
+		        }
+		    }();
+        </script>
+		<script type="text/javascript">
+            $(document).ready(function () {
+                $('#datatable').DataTable();
+            });
+            TableManageButtons.init();
+
+        </script>
+        
+	{% endblock scripts %}
+	</head>
+    
+	<body>
+		{% block navbar %}
+		<header id="topnav">
+		<div class="navbar-custom">
+			<div class="container">
+				<div id="navigation">
+					<!-- Navigation Menu-->
+					<ul class="navigation-menu">
+						<li class="has-submenu">
+							<a href="#"><i class="md md-dashboard"></i>Dashboard</a>
+							<ul class="submenu">
+								<li>
+									<a href="index.html">Dashboard 01</a>
+								</li>
+								<li>
+									<a href="dashboard_2.html">Dashboard 02</a>
+								</li>
+								<li>
+									<a href="dashboard_3.html">Dashboard 03</a>
+								</li>
+								<li>
+									<a href="dashboard_4.html">Dashboard 04</a>
+								</li>
+							</ul>
+						</li>					
+						<li class="has-submenu">
+							<a href="/transactions/"><i class="md md-list"></i>History</a>
+						</li>
+						<li class="has-submenu">
+							<a href="/transactions/details_merchant/"><i class="md md-payment"></i>Transaction</a>
+						</li>
+						<li class="has-submenu">
+							<a href="/users/myprofile/"><i class="md md-account-circle"></i>Account</a>
+						</li>
+					</ul>
+					<!-- End navigation menu        -->
+				</div>
+			</div> <!-- end container -->
+		</div> <!-- end navbar-custom -->
+		</header>
+		{% endblock %}
+			
+		{% block content %}
+			<div class="content">
+				<h1>KRED.CO</h1>
+			</div>
+		{% endblock content %}
+		
+		{% block footer %}
+		<footer class="footer text-right">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-6">
+						© 2017. All rights reserved.
+					</div>
+					<div class="col-xs-6">
+						<ul class="pull-right list-inline m-b-0">
+							<li>
+								<a href="#">About</a>
+							</li>
+							<li>
+								<a href="#">Help</a>
+							</li>
+							<li>
+								<a href="#">Contact</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</footer>
+	{% endblock %}
+	</body>
+	
+</html>

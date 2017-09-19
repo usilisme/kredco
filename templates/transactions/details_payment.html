@@ -1,0 +1,58 @@
+{% extends 'base_kredco.html' %}
+{% load staticfiles %}
+
+{% block content %}
+<div class="wrapper">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-sm-10">
+				<div class="card-box">
+					<h4 class="m-t-0 header-title"><b>Data Pembayaran</b></h4>
+					<p class="text-muted m-b-30 font-13">
+						Isikan Jumlah pembayaran beserta invoice anda.
+					</p>
+					<form class="form-horizontal" role="form">
+						<div class="form-group">
+							<label class="col-md-3 control-label">Jumlah Pembayaran</label>
+							<div class="col-md-9">
+								<input type="text" class="form-control" placeholder="berapa jumlah yang dibayarkan">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-3 control-label">Untuk keperluan apakah ini?</label>
+							<div class="col-md-9">
+								<select multiple data-style="btn-white">
+								<option>Beli Barang</option>
+								<option>Beli Jasa</option>
+								<option>Lainnya</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-3 control-label">Upload Invoice</label>
+							<div class="col-md-9">
+								<input type="file" class="filestyle" data-buttonname="btn-white">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-3 control-label">Nomor Kartu Kredit</label>
+							<div class="col-md-9">
+								<input type="text" class="form-control" placeholder="isikan nomor kartu kredit anda.">
+							</div>
+						</div>
+						<div class="form-group">
+							<a href="/transactions/details_merchant/" class="btn">Back</a>
+							<a href="/transactions/details_confirm/" class="btn btn-info waves-effect waves-light pull-right">Next</a>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="col-md-1"></div>
+		</div>
+
+
+	</div> <!-- end container -->
+</div>
+<!-- end wrapper -->
+{% endblock %}

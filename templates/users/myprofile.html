@@ -1,0 +1,76 @@
+{% extends 'base_kredco.html' %}
+{% block content %}
+	<div class="wrapper">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4 col-lg-3">
+					<div class="profile-detail card-box">
+						<div>
+							<img src="assets/images/users/avatar-2.jpg" class="img-circle" alt="profile-image">
+
+							<ul class="list-inline status-list m-t-20">
+								<li>
+									<h3 class="text-primary m-b-5">456</h3>
+									<p class="text-muted">Followings</p>
+								</li>
+
+								<li>
+									<h3 class="text-success m-b-5">5864</h3>
+									<p class="text-muted">Followers</p>
+								</li>
+							</ul>
+
+							<button type="button" class="btn btn-pink btn-custom btn-rounded waves-effect waves-light">Follow</button>
+
+							<hr>
+							<div class="text-left">
+								<p class="text-muted font-13"><strong>Username :</strong> <span class="m-l-15">{{profile.username}}</span></p>
+								<p class="text-muted font-13"><strong>Full Name :</strong> <span class="m-l-15">{{profile.first_name}} {{profile.last_name}}</span></p>
+								<p class="text-muted font-13"><strong>Email :</strong> <span class="m-l-15">{{profile.email}}</span></p>
+								<p class="text-muted font-13"><strong>Mobile :</strong><span class="m-l-15">{{profile.phone}}</span></p>
+							</div>
+
+
+							<div class="button-list m-t-20">
+								<button type="button" class="btn btn-facebook waves-effect waves-light">
+								   <i class="fa fa-facebook"></i>
+								</button>
+
+								<button type="button" class="btn btn-twitter waves-effect waves-light">
+								   <i class="fa fa-twitter"></i>
+								</button>
+
+								<button type="button" class="btn btn-linkedin waves-effect waves-light">
+								   <i class="fa fa-linkedin"></i>
+								</button>
+
+								<button type="button" class="btn btn-dribbble waves-effect waves-light">
+								   <i class="fa fa-dribbble"></i>
+								</button>
+
+							</div>
+						</div>
+					</div>					
+				</div>
+				<div class="col-md-4">
+					<div class="card-box">
+						<h4>Email</h4>
+						{{profile.email}}
+					</div>
+					<div class="card-box">Addresses
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="card-box">
+						<h4>Cards</h4>
+						{% for card in cards %}
+							**** **** **** {{ card.number}}<br/>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div> <!-- end container -->
+	</div>
+	<!-- end wrapper -->
+{% endblock %}
+</body>

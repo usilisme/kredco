@@ -33,11 +33,12 @@ User = get_user_model()
 
 #SITE
 def myprofile(request):
-    mycards = Card.objects.filter(owner = request.user)
-    context = {'mycards':mycards}
-    transactions =  Transaction.objects.filter(payer = request.user)
+    context = {}
+    context['profile'] = request.user
+    context['cards'] = Card.objects.all()
+    transactions =  Transaction.objects.all()
     context['mytransactions'] = transactions
-    return render(request, 'myprofile.html', context)
+    return render(request, 'users/myprofile.html', context)
 
 ### Start of the DRY Code ###
 class vwCrUser(CreateAPIView):

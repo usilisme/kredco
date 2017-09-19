@@ -1,0 +1,47 @@
+{% extends 'base_kredco.html' %}
+{% load staticfiles %}
+{% block content %}
+	<div class="wrapper">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="card-box table-responsive">
+						<h4 class="m-t-0 header-title"><b>Complete Transactions History</b></h4>
+						<p class="text-muted font-13 m-b-30">
+							Complete List of Transactions History
+						</p>
+
+						<table id="datatable" class="table table-striped table-bordered">
+							<thead>
+							<tr>
+								<th>Transaction Date</th>
+								<th>Merchant Name</th>
+								<th>Amount</th>
+								<th>Status</th>
+								<th>Card</th>
+								<th>Invoice</th>
+							</tr>
+							</thead>
+
+
+							<tbody>
+							{% for transaction in transactions%}
+							<tr>
+								<td>{{ transaction.date }}</td>
+								<td>{{transaction.merchant}}</td>
+								<td>{{transaction.amount}}</td>
+								<td>{{transaction.status}}</td>
+								<td>{{transaction.card}}</td>
+								<td>{{transaction.invoice}}</td>
+							</tr>
+							{% endfor %}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+
+		</div> <!-- end container -->
+	</div>
+
+{% endblock %}

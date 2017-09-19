@@ -41,6 +41,10 @@ def myprofile(request):
 def payment(request):
     return render(request,'payment.html')
 
+##DASHBOARD
+def dashboard(request):
+    return render(request, 'dashboard/index.html')
+
 #API
 @api_view(['GET'])
 def api_root(request, format=None):
