@@ -1,6 +1,11 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from django.http import HttpResponse
+
+from django.contrib.auth import authenticate,login,logout
+from django.contrib.auth.decorators import login_required
+
 from django.shortcuts import render
 from datetime import date
 from rest_framework import viewsets, status, generics, permissions
@@ -22,6 +27,7 @@ from rest_framework.permissions import(
 from kred.serializers import (
     szCrUser, szLoginUser
 )
+from users.forms import UserForm
 from users.serializers import (
     szGetUser,szGetUserProfile,szResetPass
 )
@@ -39,6 +45,42 @@ def myprofile(request):
     transactions =  Transaction.objects.all()
     context['mytransactions'] = transactions
     return render(request, 'users/myprofile.html', context)
+
+def register (request):
+    context = {}
+    registered = False
+    if request.method=='POST':
+        uf = UserForm(data=request.POST)
+        if uf.is_valid():
+            user = uf.save()
+            user.set_password(user.password)
+            user.save()
+            registered = True
+        else:
+            print(uf.errors)
+    else:
+        uf = UserForm()
+        context['UserForm'] = UserForm
+    context['registered'] = registered
+    return render (request, 'users/register.html',context)
+
+def log_in(request):
+    context = {}
+    if(request.method == 'POST'):
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(username=username,password=password)
+        if user is not None:
+            return render(request, 'transactions/transactions.html')
+        else:
+            return HttpResponse("Invalid Login")
+    else:
+        return render(request, 'users/login.html', context)
+
+def log_out(request):
+    context = {}
+    logout(request)
+    return render(request,'users/logout.html',context)
 
 ### Start of the DRY Code ###
 class vwCrUser(CreateAPIView):

@@ -1,0 +1,33 @@
+{% extends 'base_kredco.html' %}
+{% block title %}Register - kred.co{% endblock %}
+
+{% block navbar %}
+{% endblock %}
+
+{% block content %}
+<script>
+    function redirect(){
+       window.location.href = "/transactions/";
+    }
+    setTimeout(redirect, 2000); //2000 is equivalent to 3 seconds
+</script>
+<div class="row">
+	<div class="col-md-4"></div>
+	<div class="col-md-4">
+		<div class="card-box">
+			<h2>Register</h2>
+			
+			{% if registered %}
+				<form method="post">{% csrf_token %}
+					{% csrf_token %}
+					{{UserForm.as_p}}
+					<input type="submit" name="submit" value="Register" />
+				</form>
+			{% else %}
+				<p>Registration Successful. Redirecting you to your accounts.</p>
+			{% endif %}
+		</div>
+	</div>
+	<div class="col-md-4"></div>
+</div>
+{% endblock %}

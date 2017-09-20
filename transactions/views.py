@@ -8,6 +8,7 @@ from rest_framework.generics import (
 )
 
 from django.contrib.auth import get_user_model
+from django.contrib.auth.decorators import login_required
 
 from transactions.models import Transaction
 
@@ -17,6 +18,7 @@ from transactions.serializers import (
 
 
 User = get_user_model()
+
 
 def transactions(request):
     context= {}

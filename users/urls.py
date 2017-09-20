@@ -27,6 +27,16 @@ urlpatterns = [
     url(r'^myprofile/$'
         ,views.myprofile, name='myprofile'
     ),
+    url(
+      r'register/$'
+        ,views.register, name='register'
+    ),
+    url(r'^login/$'
+        , views.log_in, name='login'
+    ),
+    url(r'^logout/$'
+        , views.log_out, name='logout'
+    ),
 
     #API
     url(r'^api/register/$', views.vwCrUser.as_view(), name='register'),
