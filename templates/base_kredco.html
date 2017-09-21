@@ -23,9 +23,12 @@
         <link href="{% static "/css/responsive.css" %}" rel="stylesheet" type="text/css" />
 		<link href="{% static "/plugins/datatables/jquery.dataTables.min.css" %}" rel="stylesheet" type="text/css"/>
 		<link href="{% static "/plugins/datatables/buttons.bootstrap.min.css" %}" rel="stylesheet" type="text/css"/>
-		<link href="{% static "/plugins/datatables/dataTables.bootstrap.min.css" %}" rel="stylesheet" type="text/css"/>
 		<!-- Custom box css -->
         <link href="{% static "/plugins/custombox/css/custombox.css" %}" rel="stylesheet">
+        <!-- Tour css -->
+        <link href="{% static "/plugins/hopscotch/css/hopscotch.min.css" %}" rel="stylesheet" type="text/css" />
+                <!--Form Wizard-->
+        <link rel="stylesheet" type="text/css" href="{% static "/plugins/jquery.steps/css/jquery.steps.css" %}" />
 	{% endblock stylesheets %}
 	{% block scripts %}
 		<!-- jQuery  -->
@@ -42,7 +45,7 @@
 
 		<!-- App core js -->
 		<script src="{% static "/js/jquery.core.js" %}"></script>
-		<script src="{% static "/js/jquery.app.js" %}"></script>
+<!-- 		<script src="{% static "/js/jquery.app.js" %}"></script> -->
 		
 		<script src="{% static "/plugins/datatables/jquery.dataTables.min.js" %}"></script>
 		<script src="{% static "/plugins/datatables/dataTables.bootstrap.js" %}"></script>
@@ -51,8 +54,13 @@
         <script src="{% static "/plugins/custombox/js/custombox.min.js" %}"></script>
         <script src="{% static "/plugins/custombox/js/legacy.min.js" %}"></script>
 
-		<script src="{% static "/plugins/datatables/buttons.bootstrap.min.js" %}"></script>
+	<!-- 	<script src="{% static "/plugins/datatables/buttons.bootstrap.min.js" %}"></script> -->
 		<script src="{% static "/plugins/jquery-datatables-editable/dataTables.bootstrap.js" %}"></script>
+
+		<script src="{% static "/plugins/hopscotch/js/hopscotch.min.js" %}"></script>
+
+       
+
 		<script src="{% static "/pages/datatables.init.js" %}"></script>
 		<script>
         	var handleDataTableButtons = function() {
@@ -123,13 +131,13 @@
 							</ul>
 						</li>					
 						<li class="has-submenu">
-							<a href="/transactions/"><i class="md md-list"></i>History</a>
+							<a id='history' href="/transactions/history/"><i class="md md-list"></i>Transactions</a>
 						</li>
 						<li class="has-submenu">
-							<a href="/transactions/details_merchant/"><i class="md md-payment"></i>Transaction</a>
+							<a id='payment' href="/transactions/payment/"><i class="md md-payment"></i>Payment</a>
 						</li>
 						<li class="has-submenu">
-							<a href="/users/myprofile/"><i class="md md-account-circle"></i>Account</a>
+							<a id='profile' href="/users/myprofile/"><i class="md md-account-circle"></i>Account</a>
 							<ul class="submenu">
 								<li>
 									<a href="/users/myprofile/">Profile</a>

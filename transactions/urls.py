@@ -27,18 +27,13 @@ urlpatterns = [
         ,views.transactions, name='transactions'
     ),
     url(
-        r'details_merchant/$'
-        ,views.details_merchant, name='details_merchant'
+        r'history/$'
+        ,views.history, name='history'
     ),
     url(
-        r'^details_payment/$'
-        ,views.details_payment, name='details_payment'
+        r'payment/$'
+        ,views.payment, name='payment'
     ),
-    url(
-        r'^details_confirm/$'
-        ,views.details_confirm, name='details_confirm'
-    ),
-
     url(r'^api/$'
         , views.vwListTransaction.as_view()
         , name='transaction-list'

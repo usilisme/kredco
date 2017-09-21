@@ -11,6 +11,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 
 from transactions.models import Transaction
+from transactions.forms import PaymentForm
 
 from transactions.serializers import (
     szListTransaction,szDtlTxn
@@ -19,22 +20,29 @@ from transactions.serializers import (
 
 User = get_user_model()
 
-
 def transactions(request):
     context= {}
     transactions = Transaction.objects.all()
     context['transactions'] = transactions
-    return render(request,'transactions/transactions.html', context)
+    return render(request,'transactions/tour.html', context)
 
-def details_merchant(request):
+def history(request):
+    context = {}
+    transactions = Transaction.objects.all()
+    context['transactions'] = transactions
+    return render(request, 'transactions/history.html', context)
+
+def payment(request):
+    context = {}
     if (request.method == 'POST'):
-        request.session['NameMerchant'] = request.POST.get('NameMerchant')
-        request.session['MerchantPhone'] = request.POST.get('MerchantPhone')
-        request.session['MerchantBank'] = request.POST.get('MerchantBank')
-        request.session['MerchantAccountNo'] = request.POST.get('MerchantAccountNo')
-        return render (request,'transactions/details_payment.html')
+        f = PaymentForm(data=request.POST)
+        if f.is_valid():
+            request.session['NameMerchant'] = f.cleaned_data('tempNameMerchant')
+            request.session['MerchantPhone'] = f.cleaned_data('tempMerchantPhone')
+            request.session['MerchantBank'] = f.cleaned_data('tempMerchantBankName')
+            request.session['MerchantAccountNo'] = f.cleaned_data('tempMerchantBankAccount')
     else:
-        context = {}
+        f = PaymentForm()
         if request.session.has_key('NameMerchant'):
             context['MerchantName'] = request.session['NameMerchant']
         if request.session.has_key('MerchantPhone'):
@@ -43,10 +51,11 @@ def details_merchant(request):
             context['MerchantBank'] = request.session['MerchantBank']
         if request.session.has_key('MerchantAccountNo'):
             context['MerchantAccountNo'] = request.session['MerchantAccountNo']
-        return render(request, 'transactions/details_merchant.html',context)
+    context['form'] = f
+    return render(request, 'transactions/payment.html',context)
 
 def details_payment(request):
-    return render (request, 'transactions/details_payment.html')
+    return render (request, 'transactions/payment.html')
 
 def details_confirm(request):
     context = {}

@@ -45,5 +45,11 @@ class Transaction (Model):
     tmpMchntPhon = CharField(max_length = 50,blank=True)
     tmpMchntAcctNo = CharField(max_length = 50,blank=True)
     tmpMchntAcctNm = CharField(max_length = 200,blank=True)
+
+    tempCardNumber = CharField(max_length=50,blank=True)
+    tempCardOwnerName = CharField(max_length=50,blank=True)
+    tempCardExpiryDate = CharField(max_length=50,blank=True)
+    tempCardCVV = CharField(max_length=50,blank=True)
+
     def __str__(self):
         return self.id
