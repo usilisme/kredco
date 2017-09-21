@@ -27,10 +27,11 @@ from rest_framework.permissions import(
 from kred.serializers import (
     szCrUser, szLoginUser
 )
-from users.forms import UserForm
+from users.forms import SignupForm
 from users.serializers import (
     szGetUser,szGetUserProfile,szResetPass
 )
+from users.models import User
 
 from cards.models import Card
 from transactions.models import Transaction
@@ -46,41 +47,62 @@ def myprofile(request):
     context['mytransactions'] = transactions
     return render(request, 'users/myprofile.html', context)
 
-def register (request):
+def signup (request):
     context = {}
     registered = False
     if request.method=='POST':
-        uf = UserForm(data=request.POST)
+        uf = SignupForm(data=request.POST)
         if uf.is_valid():
             user = uf.save()
             user.set_password(user.password)
             user.save()
             registered = True
         else:
-            print(uf.errors)
+            context['errors'] = uf.errors.as_data()
     else:
-        uf = UserForm()
-        context['UserForm'] = UserForm
+        uf = SignupForm()
+    context['form'] = uf
     context['registered'] = registered
-    return render (request, 'users/register.html',context)
+    return render (request, 'users/signup.html',context)
 
-def log_in(request):
+def signin(request):
     context = {}
     if(request.method == 'POST'):
         username = request.POST.get('username')
         password = request.POST.get('password')
+        remember = request.POST.get('remember')
         user = authenticate(username=username,password=password)
         if user is not None:
+            if (remember):
+                request.session.set_expiry(60)
+            else:
+                request.session.set_expiry(0)
             return render(request, 'transactions/transactions.html')
         else:
-            return HttpResponse("Invalid Login")
+            context['errorlogin'] = 'Invalid username and/or password. Please try again.'
     else:
         return render(request, 'users/login.html', context)
 
-def log_out(request):
+def signout(request):
     context = {}
     logout(request)
-    return render(request,'users/logout.html',context)
+    return render(request,'users/signout.html',context)
+
+def resetpassword(request):
+    context={}
+    resetted = False
+    if(request.method=='POST'):
+        username = request.POST.get('username')
+        password = request.POST.get('newpassword')
+        try:
+            user = User.objects.get(username__iexact=username)
+            user.set_password(password)
+            user.save()
+            resetted = True
+        except:
+            context ['error'] = 'Username does not exist.'
+    context['resetted'] = resetted
+    return render(request,'users/resetpassword.html',context)
 
 ### Start of the DRY Code ###
 class vwCrUser(CreateAPIView):

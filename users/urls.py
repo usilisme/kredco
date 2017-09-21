@@ -28,16 +28,18 @@ urlpatterns = [
         ,views.myprofile, name='myprofile'
     ),
     url(
-      r'register/$'
-        ,views.register, name='register'
+      r'signup/$'
+        ,views.signup, name='signup'
     ),
-    url(r'^login/$'
-        , views.log_in, name='login'
+    url(r'^signin/$'
+        , views.signin, name='signin'
     ),
-    url(r'^logout/$'
-        , views.log_out, name='logout'
+    url(r'^signout/$'
+        , views.signout, name='signout'
     ),
-
+    url(r'^resetpassword/$'
+        , views.resetpassword, name='resetpassword'
+    ),
     #API
     url(r'^api/register/$', views.vwCrUser.as_view(), name='register'),
     url(r'^api/login/$', views.vwLoginUser.as_view(),name = 'login'),

@@ -24,6 +24,8 @@
 		<link href="{% static "/plugins/datatables/jquery.dataTables.min.css" %}" rel="stylesheet" type="text/css"/>
 		<link href="{% static "/plugins/datatables/buttons.bootstrap.min.css" %}" rel="stylesheet" type="text/css"/>
 		<link href="{% static "/plugins/datatables/dataTables.bootstrap.min.css" %}" rel="stylesheet" type="text/css"/>
+		<!-- Custom box css -->
+        <link href="{% static "/plugins/custombox/css/custombox.css" %}" rel="stylesheet">
 	{% endblock stylesheets %}
 	{% block scripts %}
 		<!-- jQuery  -->
@@ -44,6 +46,10 @@
 		
 		<script src="{% static "/plugins/datatables/jquery.dataTables.min.js" %}"></script>
 		<script src="{% static "/plugins/datatables/dataTables.bootstrap.js" %}"></script>
+
+		<!-- Modal-Effect -->
+        <script src="{% static "/plugins/custombox/js/custombox.min.js" %}"></script>
+        <script src="{% static "/plugins/custombox/js/legacy.min.js" %}"></script>
 
 		<script src="{% static "/plugins/datatables/buttons.bootstrap.min.js" %}"></script>
 		<script src="{% static "/plugins/jquery-datatables-editable/dataTables.bootstrap.js" %}"></script>
@@ -129,7 +135,7 @@
 									<a href="/users/myprofile/">Profile</a>
 								</li>
 								<li>
-									<a href="/users/logout/">Logout</a>
+									<a href="/users/signout/">Sign Out</a>
 								</li>
 							</ul>
 						</li>
