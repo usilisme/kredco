@@ -77,7 +77,7 @@ def signin(request):
                 request.session.set_expiry(60)
             else:
                 request.session.set_expiry(0)
-            return render(request, 'transactions/transactions.html')
+            return render(request, 'transactions/tour.html')
         else:
             context['errorlogin'] = 'Invalid username and/or password. Please try again.'
     else:
