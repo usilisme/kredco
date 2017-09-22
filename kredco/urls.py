@@ -46,12 +46,6 @@ urlpatterns = [
         ,views.payment, name='payment'
     ),
 
-    ##DASHBOARD
-    url(
-        r'^dashboard/$'
-        ,views.dashboard, name= 'dashboard'
-    ),
-
     #API
     url(r'^api-auth/'
         ,include('rest_framework.urls',namespace='rest_framework')
