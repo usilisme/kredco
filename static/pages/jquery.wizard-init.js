@@ -3,7 +3,6 @@
 * Author: Coderthemes
 * Form wizard page
 */
-
 !function($) {
     "use strict";
 
@@ -14,6 +13,10 @@
             headerTag: "h3",
             bodyTag: "section",
             transitionEffect: "slideLeft",
+            onStepChanged: function(event,currentIndex,priorIndex){
+                console.log("Ganti Halaman");
+                return true;
+            }
             onFinishing: function (event, currentIndex) { 
                 //NOTE: Here you can do form validation and return true or false based on your validation logic
                 console.log("Form has been validated!");

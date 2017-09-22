@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from datetime import datetime
+
 from django.shortcuts import render,redirect
 
 from rest_framework.generics import (
@@ -17,45 +19,51 @@ from transactions.serializers import (
     szListTransaction,szDtlTxn
 )
 
-
 User = get_user_model()
 
 def transactions(request):
     context= {}
-    transactions = Transaction.objects.all()
+    transactions = Transaction.objects.filter(status='scheduled')
     context['transactions'] = transactions
     return render(request,'transactions/tour.html', context)
 
+def dashboard(request):
+    context = {}
+    return render (request, 'dashboard.html', context)
+
 def history(request):
     context = {}
-    transactions = Transaction.objects.all()
+
+    transactions = Transaction.objects.filter(status='scheduled')
+    completeds = Transaction.objects.filter(status='completed')
+    cancelleds = Transaction.objects.filter(status='cancelled')
+
     context['transactions'] = transactions
+    context['completeds'] = completeds
+    context['cancelleds'] = cancelleds
     return render(request, 'transactions/history.html', context)
 
 def payment(request):
     context = {}
-    if (request.method == 'POST'):
-        f = PaymentForm(data=request.POST)
-        if f.is_valid():
-            request.session['NameMerchant'] = f.cleaned_data('tempNameMerchant')
-            request.session['MerchantPhone'] = f.cleaned_data('tempMerchantPhone')
-            request.session['MerchantBank'] = f.cleaned_data('tempMerchantBankName')
-            request.session['MerchantAccountNo'] = f.cleaned_data('tempMerchantBankAccount')
-    else:
-        f = PaymentForm()
-        if request.session.has_key('NameMerchant'):
-            context['MerchantName'] = request.session['NameMerchant']
-        if request.session.has_key('MerchantPhone'):
-            context['MerchantPhone'] = request.session['MerchantPhone']
-        if request.session.has_key('MerchantBank'):
-            context['MerchantBank'] = request.session['MerchantBank']
-        if request.session.has_key('MerchantAccountNo'):
-            context['MerchantAccountNo'] = request.session['MerchantAccountNo']
-    context['form'] = f
-    return render(request, 'transactions/payment.html',context)
+    completed = False
+    src = 'web' #request.META.get('HTTP_USER_AGENT')
+    dttm = datetime.today().strftime('-%Y%m%d-%H%M%S')
+    TransactionKey = src+dttm
 
-def details_payment(request):
-    return render (request, 'transactions/payment.html')
+    if (request.method == 'POST'):
+        f = PaymentForm(request.POST, request.FILES)
+        if f.is_valid():
+            t = f.save()
+            t.save()
+            completed = True
+        else:
+            print(f.errors)
+
+    else:
+        f = PaymentForm(initial={'TransactionKey':TransactionKey})
+    context['form'] = f
+    context['completed'] = completed
+    return render(request, 'transactions/payment.html',context)
 
 def details_confirm(request):
     context = {}

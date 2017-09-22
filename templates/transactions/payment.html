@@ -9,6 +9,10 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="card-box">
+                            {% if completed %}
+                                <h1 class="m-t-0 header-title"><b>Payment Sucesful</b></h1>    
+                            {% else %}
+                            <div>
                             <h4 class="m-t-0 header-title"><b>Data Transaksi</b></h4>
                             <p class="text-muted m-b-30 font-13">
                                 Mohon datanya diisi dengan benar. <br/>
@@ -16,7 +20,9 @@
 							Bila terjadi kesalahan pada saat memasukkan data seperti nomor rekening, jumlah pembayaran, dll, pihak Kred tidak akan bertanggung jawab.
                             </p>
 
-                            <form id="basic-form" action="#">
+                            <form id="payment-form" enctype="multipart/form-data" action="#" method='post'>
+                                {% csrf_token %}
+                                {{ form.TransactionKey.as_hidden }}
                                 <div>
                                     <h3>Penerima Pembayaran</h3>
                                     <section>
@@ -24,8 +30,9 @@
                                             <label class="col-lg-3 control-label " for="userName2">Nama Penerima *</label>
                                             <div class="col-lg-9">
                                                 {{form.tempMerchantName}}
+                                                {{form.tempMerchantName.errors}}
                                             </div>
-                                            {{form.tempMerchantName.errors}}
+                                            
                                         </div>
                                         <div class="form-group clearfix">
                                             <label class="col-lg-3 control-label " for="password2">Nomor Telepon Penerima *</label>
@@ -80,26 +87,26 @@
                                     <section>
                                         <div class="form-group clearfix">
                                             <label class="col-lg-3 control-label" for="name2">Nomor Kartu Kredit *</label>
-                                            <div class="col-lg-9">
+                                            <div class="col-lg-5">
                                                 {{form.tempCardNumber}}
                                             </div>
                                         </div>
                                         <div class="form-group clearfix">
                                             <label class="col-lg-3 control-label " for="surname2">Nama Pemilik Kartu *</label>
-                                            <div class="col-lg-9">
+                                            <div class="col-lg-5">
                                                 {{form.tempCardOwnerName}}
                                             </div>
                                         </div>
                                         <div class="form-group clearfix">
                                             <label class="col-lg-3 control-label " for="email2">Tanggal Habis Berlaku *</label>
-                                            <div class="col-lg-9">
+                                            <div class="col-lg-2">
                                                 {{form.tempCardExpiryDate}}
                                             </div>
                                         </div>
                                         <div class="form-group clearfix">
                                             <label class="col-lg-3 control-label " for="email2">CVV *</label>
-                                            <div class="col-lg-9">
-                                                {{form.tempCardCVV}}
+                                            <div class="col-lg-1">
+                                                {{form.tempCVV}}
                                             </div>
                                         </div>
                                         <div class="form-group clearfix">
@@ -195,7 +202,7 @@
                                                       CVV
                                                     </div>
                                                     <div class='col-lg-9'>
-                                                        <span id='cf_tempCardCVV'></span>
+                                                        <span id='cf_tempCVV'></span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -209,6 +216,8 @@
                                     </section>
                                 </div>
                             </form>
+                            </div>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -216,79 +225,78 @@
 		</div> <!-- end container -->
 	</div>
 	<!-- end wrapper -->
- <!--Form Wizard-->
-        <script type="text/javascript">
-            $(document).ready(function(){
-              
-                var tMerchantName = $('#id_tempMerchantName')
-                function set1(value){
-                $('#cf_tempMerchantName').text(value)
-                }
-                tMerchantName.keyup(function(){
-                var nMerchantName = $(this).val()
-                set1(nMerchantName)
-                })
-                
-                var tMerchantPhone = $('#id_tempMerchantPhone')
-                function set2(value){
-                $('#cf_tempMerchantPhone').text(value)
-                }
-                tMerchantPhone.keyup(function(){
-                var nMerchantPhone = $(this).val()
-                set2(nMerchantPhone)
-                })
+    
+    <!-- Plugins js -->
+        <script src="{% static "/plugins/bootstrap-inputmask/bootstrap-inputmask.min.js" %}" type="text/javascript"></script>
+        <script src="{% static "/plugins/autoNumeric/autoNumeric.js" %}" type="text/javascript"></script>
 
-                var tMerchantBankName = $('#id_tempMerchantBankName')
-                function set3(value){
-                $('#cf_tempMerchantBankName').text(value)
-                }
-                tMerchantBankName.keyup(function(){
-                var nMerchantBankName = $(this).val()
-                set3(nMerchantBankName)
-                })
-
-                var tMerchantBankAccount = $('#id_tempMerchantBankAccount')
-                function set4(value){
-                $('#cf_tempMerchantBankAccount').text(value)
-                }
-                tMerchantBankAccount.keyup(function(){
-                var nMerchantBankAccount = $(this).val()
-                set4(nMerchantBankAccount)
-                })
-
-                var tamount = $('#id_amount')
-                function set4(value){
-                $('#cf_amount').text(value)
-                }
-                tamount.keyup(function(){
-                var namount = $(this).val()
-                set4(namount)
-                })
-
-                var tMerchantBankAccount = $('#id_tempMerchantBankAccount')
-                function set4(value){
-                $('#cf_tempMerchantBankAccount').text(value)
-                }
-                tMerchantBankAccount.keyup(function(){
-                var nMerchantBankAccount = $(this).val()
-                set4(nMerchantBankAccount)
-                })
-
-                var tMerchantBankAccount = $('#id_tempMerchantBankAccount')
-                function set4(value){
-                $('#cf_tempMerchantBankAccount').text(value)
-                }
-                tMerchantBankAccount.keyup(function(){
-                var nMerchantBankAccount = $(this).val()
-                set4(nMerchantBankAccount)
-                })
-
-
-            })
-        </script>
+    <!--Form Wizard-->
         <script src="{% static "/plugins/jquery.steps/js/jquery.steps.min.js" %}" ></script>
         <script type="text/javascript" src="{% static "/plugins/jquery-validation/js/jquery.validate.min.js" %}"></script>
-        <!--wizard initialization-->
-        <script src="{% static "/pages/jquery.wizard-init.js" %}" type="text/javascript"></script>
-        
+
+        <script>
+            !function($) {
+                "use strict";
+
+    var FormWizard = function() {};
+
+    FormWizard.prototype.createBasic = function($form_container) {
+        $form_container.validate({
+            errorPlacement: function errorPlacement(error, element) {
+                element.after(error);
+            }
+        });
+        $form_container.children("div").steps({
+            headerTag: "h3",
+            bodyTag: "section",
+            transitionEffect: "slideLeft",
+            onStepChanging: function (event, currentIndex, newIndex) {
+                $form_container.validate().settings.ignore = "#id_invoice,:disabled,:hidden";
+                return $form_container.valid();
+            },
+            onStepChanged: function(event,currentIndex,priorIndex){
+                $('#cf_tempMerchantName').text($('#id_tempMerchantName').val())
+                $('#cf_tempMerchantPhone').text($('#id_tempMerchantPhone').val())
+                $('#cf_tempMerchantBankName').text($('#id_tempMerchantBankName').val())
+                $('#cf_tempMerchantBankAccount').text($('#id_tempMerchantBankAccount').val())
+                $('#cf_amount').text($('#id_amount').val())
+                $('#cf_category').text($('#id_category').val())
+                $('#cf_invoice').text($('#id_invoice').val())
+                $('#cf_tempCardNumber').text($('#id_tempCardNumber').val())
+                $('#cf_tempCardOwnerName').text($('#id_tempCardOwnerName').val())
+                $('#cf_tempCardExpiryDate').text($('#id_tempCardExpiryDate').val())
+                $('#cf_tempCVV').text($('#id_tempCVV').val())
+                console.log("Ganti Halaman")
+                return true;
+            },
+            onFinishing: function (event, currentIndex) { 
+                //NOTE: Here you can do form validation and return true or false based on your validation logic
+                $form_container.validate().settings.ignore = ":disabled,:hidden";
+                console.log("Form has been validated!");
+                return $form_container.valid(); 
+            }, 
+            onFinished: function (event, currentIndex) {
+               //NOTE: Submit the form, if all validation passed.
+                //$form_container.validate().settings.ignore = ":disabled";
+                console.log("Form can be submitted using submit method. E.g. $('#basic-form').submit()"); 
+                $("#payment-form").submit();
+            }
+        });
+        return $form_container;
+    },
+    FormWizard.prototype.init = function() {
+        //basic form
+        this.createBasic($("#payment-form"));
+    },
+    //init
+    $.FormWizard = new FormWizard, $.FormWizard.Constructor = FormWizard
+}(window.jQuery),
+
+            //initializing 
+            function($) {
+                "use strict";
+                $.FormWizard.init()
+            }(window.jQuery);
+        </script>
+
 {% endblock %}

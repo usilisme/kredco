@@ -26,6 +26,9 @@ urlpatterns = [
         r'^$'
         ,views.transactions, name='transactions'
     ),
+    url(r'dashboard/$'
+        ,views.dashboard, name='dashboard'
+    ),
     url(
         r'history/$'
         ,views.history, name='history'

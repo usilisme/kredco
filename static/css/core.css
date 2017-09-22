@@ -1503,3 +1503,7 @@ pre {
     padding: 0px !important;
   }
 }
+
+ul.errorlist{
+  font-color: red;
+}
