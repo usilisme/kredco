@@ -94,10 +94,10 @@ def signin(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 print('pass betul')
-                if (remember):
-                    request.session.set_expiry(60)
-                else:
-                    request.session.set_expiry(0)
+                #if (remember):
+                 #   request.session.set_expiry(60)
+                #else:
+                 #   request.session.set_expiry(0)
                 return render(request, 'transactions/tour.html')
             else:
                 print ('pass salah')
