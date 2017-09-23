@@ -32,6 +32,8 @@
         <link href="{% static "/plugins/hopscotch/css/hopscotch.min.css" %}" rel="stylesheet" type="text/css" />
                 <!--Form Wizard-->
         <link rel="stylesheet" type="text/css" href="{% static "/plugins/jquery.steps/css/jquery.steps.css" %}" />
+        <!-- Animation -->
+        <link href="{% static "/plugins/animate/animate.min.css" %}" rel="stylesheet" type="text/css" />
 	{% endblock stylesheets %}
 
 	{% block scripts %}
@@ -41,7 +43,6 @@
 		<script src="{% static "/js/bootstrap.min.js" %}"></script>
 		<script src="{% static "/js/detect.js" %}"></script>
 		<script src="{% static "/js/fastclick.js" %}"></script>
-
 		<script src="{% static "/js/jquery.slimscroll.js" %}"></script>
 		<script src="{% static "/js/jquery.blockUI.js" %}"></script>
 		<script src="{% static "/js/waves.js" %}"></script>
@@ -74,7 +75,7 @@
 
 		<script src="{% static "/plugins/hopscotch/js/hopscotch.min.js" %}"></script>
 
-       
+       <script src="{% static "/plugins/chart.js/chart.min.js" %}"></script>
 
 		<script src="{% static "/pages/datatables.init.js" %}"></script>
 		<script>
@@ -123,7 +124,7 @@
 					<!-- Navigation Menu-->
 					<ul class="navigation-menu">
 						<li class="has-submenu">
-							<a href="transactions/dashboard/">
+							<a href="/transactions/dashboard/">
 								<i class="md md-dashboard"></i>Dashboard
 							</a>
 						</li>					
@@ -133,6 +134,23 @@
 						<li class="has-submenu">
 							<a id='payment' href="/transactions/payment/"><i class="md md-payment"></i>Payment</a>
 						</li>
+						
+						<li class="has-submenu">
+							<a id='payment' href="/merchants/">
+								<i class="md md-shop"></i>Merchant
+							</a>
+							{% if request.user.profiles.isSeller %}
+							<ul class="submenu">
+								<li>
+									<a href="/merchants/">Search Merchant</a>
+								</li>
+								<li>
+									<a href="/merchants/myshops/">My Shops</a>
+								</li>
+							</ul>
+							{% endif %}	
+						</li>
+						
 						<li class="has-submenu">
 							<a id='profile' href="/users/myprofile/"><i class="md md-account-circle"></i>Account</a>
 							<ul class="submenu">

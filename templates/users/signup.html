@@ -1,7 +1,6 @@
 {% extends 'base_kredco.html' %}
 {% block title %}Register - kred.co{% endblock %}
-{% block navbar %}
-{% endblock %}
+{% block navbar %}{% endblock %}
 		{% block content %}
 		<div class="account-pages"></div>
 		<div class="clearfix"></div>
@@ -85,9 +84,7 @@
 				</div>
 			</div>
 			{% endif %}
-
 		</div>
-
 		<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
@@ -115,7 +112,7 @@
                                         </div>
                                     </div><!-- /.modal-content -->
                                 </div><!-- /.modal-dialog -->
-                            </div><!-- /.modal -->
+        </div><!-- /.modal -->
         <script type="text/javascript">
         	// Instantiate new modal
 var modal = new Custombox.modal({
@@ -129,4 +126,4 @@ var modal = new Custombox.modal({
 modal.open();
         </script>
         
-		{% endblock %}
+{% endblock %}

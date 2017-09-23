@@ -1,0 +1,130 @@
+{% extends 'base_kredco.html' %}
+{% load staticfiles %}
+
+{% block content %}
+	<div class="wrapper">
+		<div class="container">
+			 <!-- Wizard with Validation -->
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card-box">
+                            {% if completed %}
+                                <h1 class="m-t-0 header-title"><b>Payment Sucesful</b></h1>    
+                            {% else %}
+                            <div>
+                            <h4 class="m-t-0 header-title"><b>Formulir Pendaftaran bagi Merchant.</b></h4>
+                            <p class="text-muted m-b-30 font-13">
+                                Mohon datanya diisi dengan benar. <br/>
+							Untuk bergabung sebagai merchant di dalam KRED, Harap isi data di bawah ini dengan benar. <br/>
+							Bila terjadi kesalahan pada saat memasukkan data seperti nomor rekening, jumlah pembayaran, dll, pihak Kred tidak akan bertanggung jawab.
+                            </p>
+
+                            <form id="payment-form" enctype="multipart/form-data" action="#" method='post'>
+                                {% csrf_token %}
+                                {{ form.TransactionKey.as_hidden }}
+                                <div>
+                                    <h3>Data Pribadi</h3>
+                                    <section>
+                                        {{uf.as_p}}
+                                        {{pf.as_p}}
+                                    </section>
+                                    <h3>Data Toko</h3>
+                                    <section>
+                                       {{sf.as_p}}
+                                    </section>
+                                    <h3>Konfirmasi</h3>
+                                    <section>
+                                        <div class="form-group clearfix">
+                                            <div class="col-lg-12">
+                                                <input id="acceptTerms-2" name="acceptTerms2" type="checkbox" class="required">
+                                                <label for="acceptTerms-2">I agree with the Terms and Conditions.</label>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </form>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <!-- End row -->
+		</div> <!-- end container -->
+	</div>
+	<!-- end wrapper -->
+    
+    <!-- Plugins js -->
+        <script src="{% static "/plugins/bootstrap-inputmask/bootstrap-inputmask.min.js" %}" type="text/javascript"></script>
+        <script src="{% static "/plugins/autoNumeric/autoNumeric.js" %}" type="text/javascript"></script>
+
+    <!--Form Wizard-->
+        <script src="{% static "/plugins/jquery.steps/js/jquery.steps.min.js" %}" ></script>
+        <script type="text/javascript" src="{% static "/plugins/jquery-validation/js/jquery.validate.min.js" %}"></script>
+
+        <script>
+            !function($) {
+                "use strict";
+
+    var FormWizard = function() {};
+
+    FormWizard.prototype.createBasic = function($form_container) {
+        $form_container.validate({
+            errorPlacement: function errorPlacement(error, element) {
+                element.after(error);
+            }
+        });
+        $form_container.children("div").steps({
+            headerTag: "h3",
+            bodyTag: "section",
+            transitionEffect: "slideLeft",
+            onStepChanging: function (event, currentIndex, newIndex) {
+                $form_container.validate().settings.ignore = "#id_invoice,:disabled,:hidden";
+                return $form_container.valid();
+            },
+            onStepChanged: function(event,currentIndex,priorIndex){
+                $('#cf_tempMerchantName').text($('#id_tempMerchantName').val())
+                $('#cf_tempMerchantPhone').text($('#id_tempMerchantPhone').val())
+                $('#cf_tempMerchantBankName').text($('#id_tempMerchantBankName').val())
+                $('#cf_tempMerchantBankAccount').text($('#id_tempMerchantBankAccount').val())
+                $('#cf_amount').text($('#id_amount').val())
+                $('#cf_category').text($('#id_category').val())
+                $('#cf_invoice').text($('#id_invoice').val())
+                $('#cf_tempCardNumber').text($('#id_tempCardNumber').val())
+                $('#cf_tempCardOwnerName').text($('#id_tempCardOwnerName').val())
+                $('#cf_tempCardExpiryDate').text($('#id_tempCardExpiryDate').val())
+                $('#cf_tempCVV').text($('#id_tempCVV').val())
+                console.log("Ganti Halaman")
+                return true;
+            },
+            onFinishing: function (event, currentIndex) { 
+                //NOTE: Here you can do form validation and return true or false based on your validation logic
+                $form_container.validate().settings.ignore = ":disabled,:hidden";
+                console.log("Form has been validated!");
+                return $form_container.valid(); 
+            }, 
+            onFinished: function (event, currentIndex) {
+               //NOTE: Submit the form, if all validation passed.
+                //$form_container.validate().settings.ignore = ":disabled";
+                console.log("Form can be submitted using submit method. E.g. $('#basic-form').submit()"); 
+                $("#payment-form").submit();
+            }
+        });
+        return $form_container;
+    },
+    FormWizard.prototype.init = function() {
+        //basic form
+        this.createBasic($("#payment-form"));
+    },
+    //init
+    $.FormWizard = new FormWizard, $.FormWizard.Constructor = FormWizard
+}(window.jQuery),
+
+            //initializing 
+            function($) {
+                "use strict";
+                $.FormWizard.init()
+            }(window.jQuery);
+        </script>
+
+{% endblock %}

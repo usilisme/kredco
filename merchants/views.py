@@ -13,10 +13,41 @@ from rest_framework.filters import(
     SearchFilter
 )
 
+from users.forms import (
+    UserEditForm ,EditProfileForm
+)
 from merchants.serializers import szListMerchant
+
 from merchants.models import Merchant
 
 #SITE
+def signup(request):
+    context = {}
+    u = request.user
+    if request.method == 'POST':
+        uf = UserEditForm(request.POST, instance=u)
+        pf = BeMerchantForm(request.POST,instance=u)
+        sf = CreateShopForm(request.POST)
+        if uf.is_valid():
+            uf.save()
+        if pf.is_valid():
+            pf.save()
+        if sf.is_valid():
+            sf.save()
+    else:
+        uf = UserEditForm(instance=u)
+        pf = EditProfileForm(instance=u)
+        sf = CreateShopForm()
+
+    context['uf'] = uf
+    context['pf'] = pf
+    context['sf'] = sf
+    return render(request, 'merchants/signup.html',context)
+
+def myshops(request):
+    context = {}
+    return render (request, 'merchants/myshops.html', context)
+
 def merchants(request):
     merchants = Merchant.objects.order_by('name')[:12]
     context = {'merchants': merchants}

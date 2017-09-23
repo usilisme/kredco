@@ -3,7 +3,8 @@ from __future__ import unicode_literals
 
 from django.contrib.auth.models import User
 from django.db.models import (
-    Model, CharField, ImageField, OneToOneField
+    Model,
+    BooleanField, CharField, ImageField, OneToOneField
 )
 
 upload_path = 'media/images/users/'
@@ -14,8 +15,13 @@ class UserProfile(Model):
         max_length=200,
         blank=True
     )
+    isSeller = BooleanField(
+        default = False
+    )
     nik = CharField( #Identification Number / Nomor Induk KTP
-        max_length=20
+        max_length=20, default=0
+    )
+    phone = CharField(max_length=20, default=0
     )
     livingAddress = CharField(max_length=10, null=True, blank=True)
     avatar = ImageField(

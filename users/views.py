@@ -27,12 +27,16 @@ from rest_framework.permissions import(
 from kred.serializers import (
     szCrUser, szLoginUser
 )
-from users.forms import SignupForm
+
 from users.serializers import (
     szGetUser,szGetUserProfile,szResetPass
 )
-from users.models import User
-
+from users.forms import (
+    SignupForm, UserEditForm, EditProfileForm
+)
+from users.models import (
+    User, UserProfile,
+)
 from cards.models import Card
 from transactions.models import Transaction
 
@@ -41,10 +45,21 @@ User = get_user_model()
 #SITE
 def myprofile(request):
     context = {}
-    context['profile'] = request.user
-    context['cards'] = Card.objects.all()
-    transactions =  Transaction.objects.all()
-    context['mytransactions'] = transactions
+    u = request.user
+    if request.method == 'POST':
+        uf = UserEditForm(request.POST,instance=u)
+        pf = EditProfileForm(request.POST,instance=u)
+        if uf.is_valid():
+            uf.save()
+        if pf.is_valid():
+            pf.save()
+    else:
+        uf = UserEditForm(instance=u)
+        pf = EditProfileForm(instance=u)
+
+    context['u'] = u
+    context['uf'] = uf
+    context['pf'] = pf
     return render(request, 'users/myprofile.html', context)
 
 def signup (request):
@@ -67,21 +82,31 @@ def signup (request):
 
 def signin(request):
     context = {}
+
     if(request.method == 'POST'):
+        print('init')
         username = request.POST.get('username')
         password = request.POST.get('password')
         remember = request.POST.get('remember')
-        user = authenticate(username=username,password=password)
-        if user is not None:
-            if (remember):
-                request.session.set_expiry(60)
+
+        if User.objects.filter(username = username).exists():
+            print('check username')
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                print('pass betul')
+                if (remember):
+                    request.session.set_expiry(60)
+                else:
+                    request.session.set_expiry(0)
+                return render(request, 'transactions/tour.html')
             else:
-                request.session.set_expiry(0)
-            return render(request, 'transactions/tour.html')
+                print ('pass salah')
+                context['errorpassword'] = 'Wrong Password Entered.'
         else:
-            context['errorlogin'] = 'Invalid username and/or password. Please try again.'
-    else:
-        return render(request, 'users/login.html', context)
+            print('usernmae ga ada')
+            context['errorusername'] = 'Username entered does not exist.'
+
+    return render(request, 'users/login.html', context)
 
 def signout(request):
     context = {}

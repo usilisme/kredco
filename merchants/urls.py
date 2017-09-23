@@ -25,6 +25,12 @@ urlpatterns = [
     url(r'^$'
         ,views.merchants, name='merchant'
     ),
+    url(r'^signup/$'
+        ,views.signup, name='signup'
+    ),
+    url(r'^myshops/$'
+        ,views.myshops, name='myshops'
+    ),
 
     #API
     url(r'^api/$'

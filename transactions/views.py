@@ -5,9 +5,14 @@ from datetime import datetime
 
 from django.shortcuts import render,redirect
 
+from django.db.models import(
+    Sum,Count,
+)
 from rest_framework.generics import (
     CreateAPIView, RetrieveAPIView, UpdateAPIView, ListAPIView
 )
+
+
 
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
@@ -29,6 +34,11 @@ def transactions(request):
 
 def dashboard(request):
     context = {}
+    #Summary Statistics
+    context = Transaction.objects.aggregate(Sum('amount'),Count('id'))
+    #Recent Transactions
+    transactions = Transaction.objects.all()
+    context['transactions'] = transactions
     return render (request, 'dashboard.html', context)
 
 def history(request):
@@ -41,6 +51,7 @@ def history(request):
     context['transactions'] = transactions
     context['completeds'] = completeds
     context['cancelleds'] = cancelleds
+    print(context)
     return render(request, 'transactions/history.html', context)
 
 def payment(request):
