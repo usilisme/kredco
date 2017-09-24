@@ -46,6 +46,7 @@ User = get_user_model()
 def myprofile(request):
     context = {}
     u = request.user
+    print(u)
     if request.method == 'POST':
         uf = UserEditForm(request.POST,instance=u)
         pf = EditProfileForm(request.POST,instance=u)
@@ -72,6 +73,7 @@ def signup (request):
             user.set_password(user.password)
             user.save()
             registered = True
+            login(request,user)
         else:
             context['errors'] = uf.errors.as_data()
     else:
@@ -90,15 +92,10 @@ def signin(request):
         remember = request.POST.get('remember')
 
         if User.objects.filter(username = username).exists():
-            print('check username')
             user = authenticate(username=username, password=password)
             if user is not None:
-                print('pass betul')
-                #if (remember):
-                 #   request.session.set_expiry(60)
-                #else:
-                 #   request.session.set_expiry(0)
-                return render(request, 'transactions/tour.html')
+                login(request,user)
+                return render(request, 'transactions/tour.html',context)
             else:
                 print ('pass salah')
                 context['errorpassword'] = 'Wrong Password Entered.'
@@ -111,6 +108,7 @@ def signin(request):
 def signout(request):
     context = {}
     logout(request)
+    request.session.flush()
     return render(request,'users/signout.html',context)
 
 def resetpassword(request):

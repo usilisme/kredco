@@ -22,7 +22,7 @@
 				<div class="profile-detail card-box">
 
 					<div>
-						<img src="{{u.profiles.avatar.url}}" class="img-circle" alt="profile-image">
+						<img src="{% if u.profiles.avatar %}  {{u.profiles.avatar.url}} {% endif %}" class="img-circle" alt="profile-image">
 						<hr>
 						<div class="text-left">
 							<p class="text-muted font-13"><strong>Username :</strong> <span class="m-l-15"> {{ user }} </span></p>
