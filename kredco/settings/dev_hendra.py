@@ -18,6 +18,6 @@ STATICFILES_DIRS = [STATIC_DIR,]
 MEDIA_DIR = os.path.join(BASE_DIR,'media')
 MEDIA_ROOT = MEDIA_DIR
 
-LOGIN_URL = '/users/login/'
+LOGIN_URL = '/users/signin/'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # During development only

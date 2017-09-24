@@ -43,6 +43,7 @@ from transactions.models import Transaction
 User = get_user_model()
 
 #SITE
+@login_required
 def myprofile(request):
     context = {}
     u = request.user
@@ -94,7 +95,11 @@ def signin(request):
         if User.objects.filter(username = username).exists():
             user = authenticate(username=username, password=password)
             if user is not None:
-                login(request,user)
+                if remember:
+                    request.session.set_expiry(3600)
+                else:
+                    request.session.set_expiry(0)
+                login(request, user)
                 return render(request, 'transactions/tour.html',context)
             else:
                 print ('pass salah')
