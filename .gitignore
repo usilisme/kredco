@@ -2,8 +2,11 @@
 *.pyc
 
 #DEVELOPMENT only files
-db.sqlite3
+*.sqlite3
 media/
+
+#Template XML
+.idea/*.xml
 
 #Migrations Script
 **/migrations

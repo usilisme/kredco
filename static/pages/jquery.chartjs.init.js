@@ -13,7 +13,7 @@ File: Chartjs
 
     ChartJs.prototype.respChart = function(selector,type,data, options) {
         // get selector by context
-        var ctx = selector.get(0).getContext("2d");
+        var ctx = document.getElementById('canvas').getContext("2d");
         // pointing parent container to make chart js inherit its width
         var container = $(selector).parent();
 

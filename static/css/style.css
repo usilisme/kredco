@@ -133,8 +133,7 @@ a:hover,a:focus,.a:active {
   height: 100%;
   width: 100%;
   top: 0;
-  background-color: rgba(60, 64, 70, 0.9);
-  /*background-color: rgba(93, 156, 236, 0.9);*/
+  background-color: rgba(180, 180, 200, 0.8);
 }
 
 .m-t-20 {
@@ -626,7 +625,7 @@ input.input-subscribe:-ms-input-placeholder {
 .footer {
   padding-top: 20px;
   padding-bottom: 20px;
-  background-color: #2f3e47;
+  background-color: #B4B4C8;
 }
 
 /* Social */
