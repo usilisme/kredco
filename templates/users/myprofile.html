@@ -1,4 +1,5 @@
 {% extends 'base_kredco.html' %}
+{% load staticfiles %}
 {% block title %}My Profile - kred.co{% endblock %}
 
 {% block Merchant-Menu %}
@@ -13,17 +14,17 @@
 <div class="wrapper">
   <div class="container">
 	<div class="row card-box">
-
 	  <div class="col-md-4 col-lg-6">
-		<button class="btn btn-info">
-					<i class="fa fa-pencil"></i>
-					<a data-toggle='modal' href="#myModal">Edit</a>
-				</button>
 				<div class="profile-detail card-box">
-
 					<div>
 						<img src="{% if u.profiles.avatar %}  {{u.profiles.avatar.url}} {% endif %}" class="img-circle" alt="profile-image">
 						<hr>
+<div class="text-right">
+				<button class="btn btn-info">
+					<i class="fa fa-pencil"></i>
+					<a data-toggle='modal' href="#myModal">Edit</a>
+				</button>
+				</div>
 						<div class="text-left">
 							<p class="text-muted font-13"><strong>Username :</strong> <span class="m-l-15"> {{ user }} </span></p>
 							<p class="text-muted font-13"><strong>Full Name :</strong> <span class="m-l-15">{{u.first_name}} {{u.last_name}}</span></p>
@@ -49,10 +50,34 @@
 					</div>
 				</div>					
 	  </div>
-	  <div class="col-lg-5">
+	  <div class="col-lg-6">
 				<div class="card-box">
 					<h4>Cards</h4>
-					{{profile.email}}
+					{% for card in cards%}
+					<div class="row">
+						<div class="col-lg-3">
+						{% if card.type == "Master" %}
+							<image src="http://data1.ibtimes.co.in/en/full/613735/mastercard-logo-change-acquisition-visa-banks-tech-monogram-design-why-change-payments-technology.jpg?w=100"/>
+						{% elif card.type == "Visa" %}
+							<image src="https://sagepay.co.za/wp-content/uploads/2016/09/Sage-Pay-Visa-logo.png" />
+						{% endif %}
+						</div>
+						<div class="col-lg-4">
+						<br/>
+						{{card.number4}}
+						<br/>
+						{{card.ExpiryMonth}}/{{card.ExpiryYear}}
+						
+						</div>
+						<div class="col-lg-1 pull-right">
+							<a href="{% url 'cards:delete_card' card.id %}"><i class="fa fa-trash-o"></i></a>
+						</div>
+					</div>
+					{% endfor %}
+					<a data-toggle='modal' href="#CardModal">
+						<i class="fa fa-plus pull-right"></i>
+					</a>
+					
 				</div>
 				<div class="card-box">Address
 				</div>
@@ -73,11 +98,15 @@
 				</div>
 				{% endif %}
 			</div>
-		</div>
+	</div>
+	
+	<input type="number" pattern="[0-9]*" data-politespace data-politespace-creditcard data-politespace-creditcard-maxlength value="4321432143214321">
+
 	</div> <!-- end container -->
 </div>
 <!-- end wrapper -->
 
+<!--User Profile Form-->
 <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
     	<div class="modal-content">
@@ -87,21 +116,73 @@
 	            <h4 class="modal-title" id="myModalLabel">Update Your Profile</h4>
 	        </div>
 	        <div class="modal-body">
-	        	
 				{% csrf_token %}
-	
 					{{uf.as_p}}
 					{{pf.as_p}}
-					
+	        </div>
+	        <div class="modal-footer">
+	        	<button type="submit" class="btn btn-default waves-effect" >Tambah Kartu</button>
+	        </div>
+	        </form>	    
+	    </div>
+	</div>
+</div>
+
+<!--Create Card Form-->
+<div id="CardModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+    	<div class="modal-content">
+        	<form class="form-horizontal m-t-20" method="post">
+        	<div class="modal-header">
+	            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+	            <h4 class="modal-title" id="myModalLabel">Add Card Detail</h4>
+	        </div>
+	        <div class="modal-body">
+	        	{% csrf_token %}
+	        	<div class="form-group clearfix">
+                    <label class="col-lg-3 control-label " for="password2">Merk Kartu Kredit *</label>
+                    <div class="col-lg-9">
+                        {{cf.type}}
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="col-lg-3 control-label " for="password2">Nomor Kartu Kredit *</label>
+                    <div class="col-lg-9">
+                        {{cf.number}}
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                    <label class="col-lg-3 control-label " for="password2">Masa Berlaku *</label>
+                    <div class="col-lg-9">
+                        {{cf.ExpiryMonth}} / {{cf.ExpiryYear}}
+                    </div>
+                </div>
+                {{cf.owner}}
 	        </div>
 	        <div class="modal-footer">
 	        	<button type="submit" class="btn btn-default waves-effect" >Update</button>
 	        </div>
-	        </form>
-	    
-	    </div><!-- /.modal-content -->
-	</div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+	        </form>	    
+	    </div>
+	</div>
+</div>
+
+
+
+<script src="{% static "plugins/inputmask/inputmask.js" %}"></script>
+<script src="{% static "plugins/inputmask/inputmask.extensions.js" %}"></script>
+<script src="{% static "plugins/inputmask/inputmask.numeric.extensions.js" %}"></script>
+<script src="{% static "plugins/inputmask/inputmask.date.extensions.js" %}"></script>
+<script src="{% static "plugins/inputmask/inputmask.phone.extensions.js" %}"></script>
+<script src="{% static "plugins/inputmask/jquery.inputmask.js" %}"></script>
+<script src="{% static "plugins/inputmask/phone-codes/phone.js" %}"></script>
+<script src="{% static "plugins/inputmask/phone-codes/phone-be.js" %}"></script>
+<script src="{% static "plugins/inputmask/phone-codes/phone-ru.js" %}"></script>	
+
+
+<script>
+$(":input").inputmask();
+</script>
 
 <script type="text/javascript">
 // Instantiate new modal
@@ -114,4 +195,35 @@ var modal = new Custombox.modal({
 // Open
 modal.open();
 </script>
+
+
+<script src="{% static "plugins/politespace/politespace.js" %}"></script>
+<script src="{% static "plugins/cardjs/js/card-js.min.js" %}"></script>
+<script>
+(function( win ) {
+	"use strict";
+
+	var $;
+
+	if( 'shoestring' in win ) {
+			console.log("OK")
+	} else if( 'jQuery' in win ) {
+		$ = win.jQuery;
+	} else {
+		throw new Error( "politespace: DOM library not found." );
+	}
+
+	// auto-init on enhance (which is called on domready)
+	$( document ).bind( "enhance", function( e ) {
+		var $sel = $( e.target ).is( "[data-politespace]" ) ? $( e.target ) : $( "[data-politespace]", e.target );
+		$sel.politespace();
+	});
+
+})( typeof window !== "undefined" ? window : this );
+</script>
+<script>
+	jQuery(document).trigger("enhance");
+</script>
+
+
 {% endblock %}

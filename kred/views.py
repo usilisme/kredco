@@ -11,8 +11,10 @@ from rest_framework.response import Response
 
 from promotions.models import Promotion
 from kred.forms import SignUpForm
-
+from django.views.decorators.cache import never_cache
 #SITE
+
+@never_cache
 def index(request):
     promotion_list = Promotion.objects.order_by('name')[:3]
     context_dict = {'promotions': promotion_list}

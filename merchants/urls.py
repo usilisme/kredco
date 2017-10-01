@@ -31,6 +31,10 @@ urlpatterns = [
     url(r'^myshops/$'
         ,views.myshops, name='myshops'
     ),
+    url(r'detail/(?P<pk>\d+)/$',
+        views.detail_merchant
+        ,name='detail_merchant'
+    ),
 
     #API
     url(r'^api/$'

@@ -296,8 +296,8 @@ File: Menu
 }
 @media (min-width: 992px) {
   #topnav .navigation-menu > li > a {
-    padding-top: 22px;
-    padding-bottom: 22px;
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
 }
 /*

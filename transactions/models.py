@@ -10,6 +10,13 @@ from django.db.models import (
 )
 from django.contrib.auth.models import User
 from merchants.models import Merchant
+from cards.models import Card
+
+CHOICES_BANK = (
+    ('BRI','BANK RI'),
+    ('BM','BANK MANDIRI'),
+    ('BCA','BANK CENTRAL ASIA'),
+)
 
 class Transaction (Model):
     TRANSACTION_STATUS = (
@@ -18,7 +25,7 @@ class Transaction (Model):
         , ('cancelled', 'cancelled')
     )
     TransactionKey = CharField(
-        blank=True,null=True,
+        blank=False,null=False, default='Unknown',
         max_length = 19 # <sourceID>-yyyyMMdd-hhmmss ios-201708-130500
 
     )
@@ -41,7 +48,7 @@ class Transaction (Model):
         max_length=200, blank=True
     )
     amount = DecimalField(blank=True,null=True,
-        max_digits=12
+        max_digits=20
         ,decimal_places=2
     )
     category = CharField(
@@ -60,8 +67,14 @@ class Transaction (Model):
     tempMerchantName = CharField(max_length = 200,blank=True)
     tempMerchantPhone = CharField(max_length = 50,blank=True)
     tempMerchantBankAccount = CharField(max_length = 50,blank=True)
-    tmpMerchantBankName = CharField(max_length = 200,blank=True)
+    tmpMerchantBankName = CharField(
+        max_length = 200,
+        blank=True,
+    )
 
+    CardUsed = ForeignKey(
+        Card,on_delete= SET_NULL, blank=True, null = True
+    )
     tempCardNumber = CharField(max_length=50,blank=True)
     tempCardOwnerName = CharField(max_length=50,blank=True)
     tempCardExpiryDate = CharField(max_length=50,blank=True)

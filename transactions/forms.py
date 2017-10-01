@@ -1,14 +1,24 @@
+import decimal
 from django.forms import (
     ModelForm
-    , CharField, EmailField, DecimalField, ImageField, FileField
-    , TextInput, NumberInput, PasswordInput, FileInput, ClearableFileInput
+    , CharField, EmailField, DecimalField, ImageField, FileField, ChoiceField, ModelChoiceField
+    , TextInput, NumberInput, PasswordInput, FileInput, ClearableFileInput, Select
     , ValidationError
 )
 from django.contrib.auth.forms import UserCreationForm
 from transactions.models import Transaction
+from cards.models import Card
+
+CHOICES_BANK = (
+    ('BRI','BANK RI'),
+    ('BM','BANK MANDIRI'),
+    ('BCA','BANK CENTRAL ASIA'),
+)
 
 class PaymentForm(ModelForm):
-    TransactionKey = CharField()
+    TransactionKey = CharField(
+        required = True
+    )
     tempMerchantName = CharField(
         required = True,
         widget=TextInput(
@@ -21,13 +31,16 @@ class PaymentForm(ModelForm):
             attrs={'class': 'form-control'
                 , 'placeholder': 'HP atau Telepon Rumah yang dapat dihubungi'})
     )
-    tempMerchantBankName = CharField(
-        widget=TextInput(
+    tempMerchantBankName = ChoiceField(
+        required = True,
+        widget=Select(
             attrs={'class': 'form-control'
-                , 'placeholder': 'Bank Penerima Pembayaran'})
+                , 'placeholder': 'Bank Penerima Pembayaran'}),
+        choices = CHOICES_BANK,
     )
     tempMerchantBankAccount = CharField(
-        widget=TextInput(
+        required = True,
+        widget=NumberInput(
             attrs={'class': 'form-control'
                 , 'placeholder': 'Nomor Rekening Pembayaran'})
     )
@@ -35,8 +48,8 @@ class PaymentForm(ModelForm):
         widget=TextInput(
             attrs={'class': 'form-control'
                    ,'placeholder': 'Nilai Rupiah yang dibayarkan.'
-                   ,'data-a-sep':","
-                   ,'data-a-dec':"."})
+                   ,'data-a-sep':"."
+                   ,'data-a-dec':","})
     )
     category = CharField(
         widget=TextInput(
@@ -50,29 +63,7 @@ class PaymentForm(ModelForm):
                    ,'placeholder':'Upload Foto Invoice'
                    ,'required':'false'})
     )
-    tempCardNumber = CharField(
-        max_length=16,
-        widget=TextInput(
-            attrs={'class':'form-control'
-                   ,'placeholder':'16-digit Nomor Kartu Kredit'})
-    )
-    tempCardOwnerName = CharField(
-        widget=TextInput(
-            attrs={'class': 'form-control'
-                , 'placeholder': 'Nama pemegang Kartu Kredit'})
-    )
-    tempCardExpiryDate = CharField(
-        max_length=5,
-        widget=TextInput(
-            attrs={'class': 'form-control'
-                , 'placeholder': 'MM/YY'})
-    )
-    tempCVV = CharField(
-        max_length=3,
-        widget=TextInput(
-            attrs={'class': 'form-control'
-                , 'placeholder': 'CVV'})
-    )
+
 
     class Meta:
         model = Transaction
@@ -81,9 +72,14 @@ class PaymentForm(ModelForm):
             , 'tempMerchantName'        , 'tempMerchantPhone'
             , 'tempMerchantBankName'    , 'tempMerchantBankAccount'
             , 'amount'                  ,'category'
-            , 'invoice'
-            , 'tempCardNumber'
+            , 'invoice'                 ,'CardUsed'
         )
+
+    def __init__(self, *args, **kwargs):
+        self.payer = kwargs.pop('payer',None)
+        super(PaymentForm, self).__init__(*args, **kwargs)
+        self.fields['CardUsed'].queryset = Card.objects.filter(owner=self.payer)
+
 
 
 

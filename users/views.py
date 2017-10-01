@@ -6,7 +6,7 @@ from django.http import HttpResponse
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from datetime import date
 from rest_framework import viewsets, status, generics, permissions
 from rest_framework.generics import (
@@ -37,6 +37,7 @@ from users.forms import (
 from users.models import (
     User, UserProfile,
 )
+from cards.forms import CardCreateForm
 from cards.models import Card
 from transactions.models import Transaction
 
@@ -47,21 +48,36 @@ User = get_user_model()
 def myprofile(request):
     context = {}
     u = request.user
-    print(u)
+    cards = Card.objects.filter(owner=u)
+
     if request.method == 'POST':
         uf = UserEditForm(request.POST,instance=u)
         pf = EditProfileForm(request.POST,instance=u)
+        cf = CardCreateForm(request.POST,initial={'owner':u})
+        cf.owner = u
         if uf.is_valid():
             uf.save()
         if pf.is_valid():
             pf.save()
+        if cf.is_valid():
+            cf.save()
+        else:
+            print cf.errors
+        context['u'] = u
+        context['uf'] = uf
+        context['pf'] = pf
+        context['cf'] = cf
+        context['cards'] = cards
+        return redirect('/users/myprofile/')
     else:
         uf = UserEditForm(instance=u)
         pf = EditProfileForm(instance=u)
-
+        cf = CardCreateForm(initial={'owner':u})
     context['u'] = u
     context['uf'] = uf
     context['pf'] = pf
+    context['cf'] = cf
+    context['cards'] = cards
     return render(request, 'users/myprofile.html', context)
 
 def signup (request):

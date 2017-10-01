@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from django.http import HttpResponse
 from django.shortcuts import render
 
 from rest_framework.generics import (
@@ -46,21 +47,21 @@ def signup(request):
 
 def myshops(request):
     context = {}
-    return render (request, 'merchants/myshops.html', context)
+    return render(request, 'construction.html', context)
 
 def merchants(request):
-    merchants = Merchant.objects.order_by('name')[:12]
-    context = {'merchants': merchants}
-
-
-    filter = request.GET.get("filter")
+    filter = request.GET.get("q")
     if filter:
         filter = filter
     else :
         filter = ""
     results = Merchant.objects.filter(name__icontains=filter)
-    context = {'results':results}
+    context = {'merchants':results}
     return render(request,'merchant.html', context)
+
+def detail_merchant(request,pk):
+    context = {}
+    return render (request, 'construction.html', context)
 
 #API
 class vwListMerchant(ListAPIView):

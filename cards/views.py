@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from django.http import HttpResponse
+from django.shortcuts import render,redirect
+
 from django.contrib.auth import get_user_model
 
 from rest_framework.generics import (
@@ -13,6 +16,11 @@ from cards.serializers import (
 from cards.models import Card
 
 User = get_user_model()
+
+def delete_card(request,pk):
+    card = Card.objects.get(pk = pk)
+    card.delete()
+    return redirect('/users/myprofile/')
 
 ### Start of the DRY Code ###
 class vwListCard(ListAPIView):

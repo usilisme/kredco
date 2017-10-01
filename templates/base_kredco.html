@@ -35,9 +35,14 @@
         <link rel="stylesheet" type="text/css" href="{% static "/plugins/jquery.steps/css/jquery.steps.css" %}" />
         <!-- Animation -->
         <link href="{% static "/plugins/animate/animate.min.css" %}" rel="stylesheet" type="text/css" />
+        <link href="{% static "/plugins/politespace/politespace.css" %}" rel="stylesheet" type="text/css" />
+
+        <link href="{% static "/plugins/cardjs/card-js.min.css" %}" rel="stylesheet" type="text/css" />
 	{% endblock stylesheets %}
 
 	{% block scripts %}
+	 <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
 		<script src="{% static "/js/modernizr.min.js" %}"></script>
 		<!-- jQuery  -->
 		<script src="{% static "/js/jquery.min.js" %}"></script>
@@ -60,6 +65,11 @@
 
 	<script src="{% static "/pages/jquery.dashboard.js" %}"></script>
 		
+
+        <script src="{% static "/plugins/notifyjs/js/notify.js" %}"></script>
+        <script src="{% static "/plugins/notifications/notify-min.js" %}"></script>
+        <script src="{% static "/plugins/notifications/notify-metro.js" %}"></script>
+
 	<!-- App core js -->
 	<script src="{% static "/js/jquery.core.js" %}"></script>
 	<script src="{% static "/js/jquery.app.js" %}"></script>
@@ -75,6 +85,9 @@
 		<script src="{% static "/plugins/jquery-datatables-editable/dataTables.bootstrap.js" %}"></script>
 
 		<script src="{% static "/plugins/hopscotch/js/hopscotch.min.js" %}"></script>
+
+		<script src="{% static "/plugins/bootstrap-inputmask/bootstrap-inputmask.min.js" %}" type="text/javascript"></script>
+		<script src="{% static "/plugins/autoNumeric/autoNumeric.js" %}" type="text/javascript"></script>
 
        <script src="{% static "/plugins/chart.js/chart.min.js" %}"></script>
 
@@ -114,11 +127,37 @@
 		
         
 	{% endblock scripts %}
+	  <style type="text/css">
+    .my-custom-class {
+      border: 1px dashed #f00 !important;
+    }
+  </style>
 	</head>
     
 	<body>
 		{% block navbar %}
 		<header id="topnav">
+		<div class="topbar-main">
+                <div class="container">
+                    <div class="logo">
+                        <a href="#" class="logo"><span>KRED</span></a>
+                    </div>
+                    <div class="menu-extras">
+                        <div class="menu-item">
+                            <!-- Mobile menu toggle-->
+                            <a class="navbar-toggle">
+                                <div class="lines">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                            </a>
+                            <!-- End mobile menu toggle-->
+                        </div>
+                    </div>
+
+                </div>
+            </div>
 		<div class="navbar-custom">
 			<div class="container">
 				<div id="navigation">
@@ -202,6 +241,22 @@
 			</div>
 		</footer>
 	{% endblock %}
+
+	{% block bodyscript %}
+	<script src="{% static "/js/jquery.min.js" %}"></script>
+	<script src="{% static "/js/bootstrap.min.js" %}"></script>
+	<script src="{% static "/js/detect.js" %}"></script>
+	<script src="{% static "/js/fastclick.js" %}"></script>
+	<script src="{% static "/js/jquery.slimscroll.js" %}"></script>
+	<script src="{% static "/js/jquery.blockUI.js" %}"></script>
+	<script src="{% static "/js/waves.js" %}"></script>
+	<script src="{% static "/js/wow.min.js" %}"></script>
+	<script src="{% static "/js/jquery.nicescroll.js" %}"></script>
+	<script src="{% static "/js/jquery.scrollTo.min.js" %}"></script>
+	<script src="{% static "/js/jquery.core.js" %}"></script>
+	<script src="{% static "/js/jquery.app.js" %}"></script>
+	{% endblock %}
 	</body>
+	
 	
 </html>

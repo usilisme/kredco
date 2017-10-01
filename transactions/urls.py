@@ -33,6 +33,9 @@ urlpatterns = [
         r'history/$'
         ,views.history, name='history'
     ),
+    url(r'delete/(?P<pk>\d+)/'
+        ,views.cancel_transaction, name='cancel_transaction'
+    ),
     url(
         r'payment/$'
         ,views.payment, name='payment'

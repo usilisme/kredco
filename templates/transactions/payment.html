@@ -27,7 +27,7 @@
                                     <h3>Penerima Pembayaran</h3>
                                     <section>
                                         <div class="form-group clearfix">
-                                            <label class="col-lg-3 control-label " for="userName2">Nama Penerima *</label>
+                                            <label class="col-lg-3 control-label " for="userName2" data-mask="____-__-__">Nama Penerima *</label>
                                             <div class="col-lg-9">
                                                 {{form.tempMerchantName}}
                                                 {{form.tempMerchantName.errors}}
@@ -61,7 +61,7 @@
                                     <h3>Nilai Transaksi</h3>
                                     <section>
                                         <div class="form-group clearfix">
-                                            <label class="col-lg-3 control-label" for="name2">Jumlah Pembayaran *</label>
+                                            <label class="col-lg-3 control-label" for="name2" data-a-sign="£ ">Jumlah Pembayaran *</label>
                                             <div class="col-lg-9">
                                                 {{form.amount}}
                                             </div>
@@ -86,29 +86,12 @@
                                     <h3>Kartu Kredit</h3>
                                     <section>
                                         <div class="form-group clearfix">
-                                            <label class="col-lg-3 control-label" for="name2">Nomor Kartu Kredit *</label>
+                                            <label class="col-lg-3 control-label" for="name2">Kartu Kredit *</label>
                                             <div class="col-lg-5">
-                                                {{form.tempCardNumber}}
+                                                {{form.CardUsed}}
                                             </div>
                                         </div>
-                                        <div class="form-group clearfix">
-                                            <label class="col-lg-3 control-label " for="surname2">Nama Pemilik Kartu *</label>
-                                            <div class="col-lg-5">
-                                                {{form.tempCardOwnerName}}
-                                            </div>
-                                        </div>
-                                        <div class="form-group clearfix">
-                                            <label class="col-lg-3 control-label " for="email2">Tanggal Habis Berlaku *</label>
-                                            <div class="col-lg-2">
-                                                {{form.tempCardExpiryDate}}
-                                            </div>
-                                        </div>
-                                        <div class="form-group clearfix">
-                                            <label class="col-lg-3 control-label " for="email2">CVV *</label>
-                                            <div class="col-lg-1">
-                                                {{form.tempCVV}}
-                                            </div>
-                                        </div>
+                                        
                                         <div class="form-group clearfix">
                                             <label class="col-lg-12 control-label ">(*) Mandatory</label>
                                         </div>
@@ -175,36 +158,14 @@
                                                 </div>
                                                 <div class='row'>
                                                     <div class='col-lg-3'>
-                                                      Nomor Kartu Kredit
+                                                      Kartu Kredit
                                                     </div>
                                                     <div class='col-lg-9'>
                                                         <span id='cf_tempCardNumber'></span>
                                                     </div>
                                                 </div>
-                                                <div class='row'>
-                                                    <div class='col-lg-3'>
-                                                      Nama Pemilik Kartu
-                                                    </div>
-                                                    <div class='col-lg-9'>
-                                                        <span id='cf_tempCardOwnerName'></span>
-                                                    </div>
-                                                </div>
-                                                <div class='row'>
-                                                    <div class='col-lg-3'>
-                                                      Tanggal Habis Berlaku
-                                                    </div>
-                                                    <div class='col-lg-9'>
-                                                        <span id='cf_tempCardExpiryDate'></span>
-                                                    </div>
-                                                </div>
-                                                <div class='row'>
-                                                    <div class='col-lg-3'>
-                                                      CVV
-                                                    </div>
-                                                    <div class='col-lg-9'>
-                                                        <span id='cf_tempCVV'></span>
-                                                    </div>
-                                                </div>
+                                              
+                                               
                                             </div>
                                         </div>
                                         <div class="form-group clearfix">
@@ -225,7 +186,37 @@
 		</div> <!-- end container -->
 	</div>
 	<!-- end wrapper -->
-    
+  
+<!-- Modal -->
+  <div class="modal fade" id="CardWarning" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Perlu Melakukan Registrasi Kartu Kredit</h4>
+        </div>
+        <div class="modal-body">
+          <p>Anda belum melakukan registrasi kartu kredit. Tolong setup kartu kredit detail anda terlebih dahulu di <a href="/users/myprofile">halaman profile anda</a>.</p>
+        </div>
+        <div class="modal-footer">
+          <a href="/users/myprofile" type="button" class="btn btn-default">Tutup</a>
+        </div>
+      </div>     
+    </div>
+  </div>
+
+{% if cards %}
+{% else %}  
+<script>
+    $(window).load(function(){
+    $('#CardWarning').modal('show');
+});
+</script>
+{% endif %}
+
+
+
     <!-- Plugins js -->
         <script src="{% static "/plugins/bootstrap-inputmask/bootstrap-inputmask.min.js" %}" type="text/javascript"></script>
         <script src="{% static "/plugins/autoNumeric/autoNumeric.js" %}" type="text/javascript"></script>
@@ -233,6 +224,9 @@
     <!--Form Wizard-->
         <script src="{% static "/plugins/jquery.steps/js/jquery.steps.min.js" %}" ></script>
         <script type="text/javascript" src="{% static "/plugins/jquery-validation/js/jquery.validate.min.js" %}"></script>
+
+
+
 
         <script>
             !function($) {
@@ -252,7 +246,7 @@
             transitionEffect: "slideLeft",
             onStepChanging: function (event, currentIndex, newIndex) {
                 $form_container.validate().settings.ignore = "#id_invoice,:disabled,:hidden";
-                return $form_container.valid();
+                return true;
             },
             onStepChanged: function(event,currentIndex,priorIndex){
                 $('#cf_tempMerchantName').text($('#id_tempMerchantName').val())
@@ -262,11 +256,8 @@
                 $('#cf_amount').text($('#id_amount').val())
                 $('#cf_category').text($('#id_category').val())
                 $('#cf_invoice').text($('#id_invoice').val())
-                $('#cf_tempCardNumber').text($('#id_tempCardNumber').val())
-                $('#cf_tempCardOwnerName').text($('#id_tempCardOwnerName').val())
-                $('#cf_tempCardExpiryDate').text($('#id_tempCardExpiryDate').val())
-                $('#cf_tempCVV').text($('#id_tempCVV').val())
-                console.log("Ganti Halaman")
+                $('#cf_tempCardNumber').text($('#id_CardUsed option:selected').text())
+                
                 return true;
             },
             onFinishing: function (event, currentIndex) { 
@@ -298,5 +289,9 @@
                 $.FormWizard.init()
             }(window.jQuery);
         </script>
-
+        <script type="text/javascript">
+          jQuery(function($) {
+              $('.autonumber').autoNumeric('init');
+          });
+        </script>
 {% endblock %}

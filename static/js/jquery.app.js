@@ -1,131 +1,54 @@
-/* Theme Name: Zodkoo - Responsive Landing page template
-   Author: Coderthemes
-   Author e-mail: coderthemes@gmail.com
-   Version: 1.0.0
-   Created: May 2016
-   File Description:Main JS file of the template
-*/
+/**
+ * Theme: Ubold Admin Template
+ * Author: Coderthemes
+ * Module/App: Main Js
+ */
 
 
-!function($) {
-    "use strict";
+(function ($) {
 
+    'use strict';
 
-    var ContactForm = function() {
-        this.$contactForm = $("#contact-form"),
-        this.$errorMessages = $("#err-form"),
-        this.$confirmMessage = $("#success-form")
-    };
-    //contact form submit handler
-    ContactForm.prototype.submitForm = function(e) {
-        var $this = this;
-        $this.$errorMessages.fadeOut('slow'); // reset the error messages (hides them)
+    function initNavbar() {
 
-        var data_string = $this.$contactForm.serialize(); // Collect data from form
-        $.ajax({
-            type: "POST",
-            url: $this.$contactForm.attr('action'),
-            data: data_string,
-            timeout: 6000,
-            cache: false,
-            crossDomain: false,
-            error: function (request, error) {
-                $this.$errorMessages.html('An error occurred: ' + error + '');
-            },
-            success: function () {
-                $this.$confirmMessage.show(500).delay(4000).animate({
-                    height: 'toggle'
-                    }, 500, function () {
-                    }
-                );
+        $('.navbar-toggle').on('click', function (event) {
+            $(this).toggleClass('open');
+            $('#navigation').slideToggle(400);
+        });
+
+        $('.navigation-menu>li').slice(-1).addClass('last-elements');
+
+        $('.navigation-menu li.has-submenu a[href="#"]').on('click', function (e) {
+            if ($(window).width() < 992) {
+                e.preventDefault();
+                $(this).parent('li').toggleClass('open').find('.submenu:first').toggleClass('open');
             }
         });
-        return false;
-    },
+    }
 
-    ContactForm.prototype.init = function () {
-        var $this = this;
-        //initializing the contact form
-        this.$contactForm.parsley().on('form:submit', function() {
-            $this.submitForm();
-            return false;
-        });
-    },
-    $.ContactForm = new ContactForm, $.ContactForm.Constructor = ContactForm
+    function init() {
+        initNavbar();
+    }
 
-}(window.jQuery),
+    init();
 
+})(jQuery);
 
-function($) {
-    "use strict";
+$('.slimscroll-noti').slimScroll({
+    height: '230px',
+    position: 'right',
+    size: "5px",
+    color: '#98a6ad',
+    wheelStep: 10
+});
 
-    var Page = function() {
-        this.$topSection = $('#home-fullscreen'),
-        this.$topNavbar = $("#navbar-menu"),
-        this.$stickyElem = $("#sticky-nav"),
-        this.$backToTop = $('#back-to-top'),
-        this.$contactForm = $("#contact-form")
-    };
-
-    //
-    Page.prototype.init = function () {
-        var $this = this;
-        //window related event
-
-        //Handling load event
-        $(window).on('load', function() {
-            var windowHeight = $(window).height();
-            // adding height attr to top section
-            $this.$topSection.css('height', windowHeight);
-
-            //init sticky
-            $this.$stickyElem.sticky({topSpacing: 0});
-        });
-
-        //Handling the resize event
-        $(window).on('resize', function() {
-            var windowHeight = $(window).height();
-            $this.$topSection.css('height', windowHeight);
-        });
-
-        //Handling the scroll event
-        $(window).scroll(function(){
-            if ($(this).scrollTop() > 100) {
-                $this.$backToTop.fadeIn();
-            } else {
-                $this.$backToTop.fadeOut();
-            }
-        }); 
-
-        //on click on navbar - Smooth Scroll To Anchor (requires jQuery Easing plugin)
-        this.$topNavbar.on('click', function(event) {
-            var $anchor = $(event.target);
-            if ($($anchor.attr('href')).length > 0 && $anchor.is('a.nav-link')) {
-                $('html, body').stop().animate({
-                    scrollTop: $($anchor.attr('href')).offset().top - 0
-                }, 1500, 'easeInOutExpo');
-                event.preventDefault();    
-            }
-        });
-
-        //back-to-top button
-        $this.$backToTop.click(function(){
-            $("html, body").animate({ scrollTop: 0 }, 1000);
-            return false;
-        });
-
-
-        //init contact app if contact form added in a page
-        if(this.$contactForm.length>0)
-            $.ContactForm.init();
-
-    },
-    //init
-    $.Page = new Page, $.Page.Constructor = Page
-}(window.jQuery),
-
-//initializing
-function($) {
-    "use strict";
-    $.Page.init()
-}(window.jQuery);
+// === following js will activate the menu in left side bar based on url ====
+$(document).ready(function () {
+    $(".navigation-menu a").each(function () {
+        if (this.href == window.location.href) {
+            $(this).parent().addClass("active"); // add active to li of the current link
+            $(this).parent().parent().parent().addClass("active"); // add active class to an anchor
+            $(this).parent().parent().parent().parent().parent().addClass("active"); // add active class to an anchor
+        }
+    });
+});

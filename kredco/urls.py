@@ -24,6 +24,8 @@ from rest_framework.urlpatterns import format_suffix_patterns
 from kred import views
 from rest_framework_jwt.views import obtain_jwt_token
 #router = routers.DefaultRouter()
+from django.views.decorators.cache import never_cache
+from django.contrib.staticfiles.views import serve
 
 urlpatterns = [
     #url(r'^$', views.index,name='index'),
@@ -70,7 +72,7 @@ urlpatterns = [
         , include('transactions.urls', namespace='transactions')
         ),
 ]
-urlpatterns+= static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-urlpatterns+= static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns+= static(settings.STATIC_URL, view=never_cache(serve), document_root=settings.STATIC_ROOT)
+urlpatterns+= static(settings.MEDIA_URL, view=never_cache(serve), document_root=settings.MEDIA_ROOT)
 
 

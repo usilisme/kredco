@@ -17,6 +17,10 @@ from django.conf.urls import url
 from cards import views
 
 urlpatterns = [
+    url(r'delete/(?P<pk>\d+)/$'
+        , views.delete_card
+        ,name = 'delete_card'
+    ),
     url(r'^api/$'
         , views.vwListCard.as_view()
         ,name='card-list'

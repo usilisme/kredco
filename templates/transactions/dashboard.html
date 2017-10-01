@@ -1,0 +1,185 @@
+{% extends 'base_kredco.html' %}
+{% load staticfiles %}
+
+{% block content %}  
+  <div class="wrapper">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-6 col-lg-63">
+                  <div class="widget-bg-color-icon card-box fadeInDown animated">
+                      <div class="bg-icon bg-icon-info pull-left">
+                          <i class="md md-attach-money text-info"></i>
+                      </div>
+                      <div class="text-right">
+                          <h3 class="text-dark"><b class="counter">{{amount__sum}}</b></h3>
+                          <p class="text-muted">Total Payment Made to-date</p>
+                      </div>
+                      <div class="clearfix"></div>
+                  </div>
+              </div>
+
+              <div class="col-md-6 col-lg-6">
+                  <div class="widget-bg-color-icon card-box">
+                      <div class="bg-icon bg-icon-pink pull-left">
+                          <i class="md md-add-shopping-cart text-pink"></i>
+                      </div>
+                      <div class="text-right">
+                          <h3 class="text-dark"><b class="counter">{{id__count}}</b></h3>
+                          <p class="text-muted">Today Transactions to-date</p>
+                      </div>
+                      <div class="clearfix"></div>
+                  </div>
+              </div>
+          </div>
+
+          <div class="row">
+              <div class="col-lg-12">
+                  <div class="card-box">
+                      <a href="/transactions/history/" class="pull-right btn btn-default btn-sm waves-effect waves-light">View All</a>
+                      <h4 class="text-dark header-title m-t-0">Recent Transactions </h4>
+                      <p class="text-muted m-b-30 font-13">
+                          Ordered by the Date of Transaction.
+                      </p>
+                      <div class="table-responsive">
+                          <table class="table table-actions-bar m-b-0">
+                              <thead>
+                                  <tr>
+                                      <th>Transaction Date</th>
+                                      <th>Merchant Name</th>
+                                      <th>Amount</th>
+                                      <th>Status</th>
+                                      <th>Category</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                {% for transaction in transactions %}
+                                  <tr>
+                                      <td>{{transaction.date}}</td>
+                                      <td>{{transaction.tempMerchantName}}</td>
+                                      <td>{{transaction.amount}}</td>
+                                      <td>{{transaction.status}}</td>
+                                      <td>{{transaction.category}}</td>
+                                  </tr>
+{%endfor%}
+                              </tbody>
+                          </table>
+                      </div>
+
+                  </div>
+              </div>
+              <!-- end col -->
+
+          </div>
+          <!-- end row -->
+
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="card-box">
+                  <h4 class="m-t-0 header-title"><b>Bar Chart</b></h4>
+                  <p class="text-muted m-b-15 font-13">
+                  </p>
+                  <canvas id="bar" height="300"></canvas>
+              </div>
+            </div>   
+          </div>
+          <!-- end row -->
+
+
+      </div>
+  </div>
+       <script src="{% static "/plugins/chart.js/chart.min.js" %}"></script>
+       <script>
+         
+!function($) {
+    "use strict";
+
+    var ChartJs = function() {};
+
+    ChartJs.prototype.respChart = function(selector,type,data, options) {
+        // get selector by context
+        var ctx = document.getElementById('bar').getContext("2d");
+        // pointing parent container to make chart js inherit its width
+        var container = $(selector).parent();
+
+        // enable resizing matter
+        $(window).resize( generateChart );
+
+        // this function produce the responsive Chart JS
+        function generateChart(){
+            // make chart width fit with its container
+            var ww = selector.attr('width', $(container).width() );
+            switch(type){
+                case 'Line':
+                    new Chart(ctx, {type: 'line', data: data, options: options});
+                    break;
+                case 'Doughnut':
+                    new Chart(ctx, {type: 'doughnut', data: data, options: options});
+                    break;
+                case 'Pie':
+                    new Chart(ctx, {type: 'pie', data: data, options: options});
+                    break;
+                case 'Bar':
+                    new Chart(ctx, {type: 'bar', data: data, options: options});
+                    break;
+                case 'Radar':
+                    new Chart(ctx, {type: 'radar', data: data, options: options});
+                    break;
+                case 'PolarArea':
+                    new Chart(ctx, {data: data, type: 'polarArea', options: options});
+                    break;
+            }
+            // Initiate new chart or Redraw
+
+        };
+        // run function - render chart at first load
+        generateChart();
+    },
+    //init
+    ChartJs.prototype.init = function() {
+        //donut chart
+        var donutChart = {
+            labels: [
+              {% for x in piedata %}
+                "{{x.status}}",
+                {% endfor %}
+            ],
+            datasets: [
+                {
+                    data: [
+                    {% for x in piedata %}
+                      {{x.amount__sum}},
+                    {% endfor %}
+                    ],
+                    backgroundColor: [
+                        "#5d9cec",
+                        "#5fbeaa",
+                        "#ebeff2"
+                    ],
+                    hoverBackgroundColor: [
+                        "#5d9cec",
+                        "#5fbeaa",
+                        "#ebeff2"
+                    ],
+                    hoverBorderColor: "#fff"
+                }]
+        };
+        this.respChart($("#doughnut"),'Doughnut',donutChart);
+
+    },
+    $.ChartJs = new ChartJs, $.ChartJs.Constructor = ChartJs
+
+}(window.jQuery),
+
+//initializing
+function($) {
+    "use strict";
+    $.ChartJs.init()
+}(window.jQuery);
+       </script>
+
+
+{% endblock%}
+
+
+
+    
